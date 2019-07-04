@@ -2,7 +2,7 @@
 
 ## Description 
 
-Database Interface Layer is govering input and output process of database communication from any other microservices. In this abstraction layer, this repository will provide the API for communication with the following tables: 
+Database Interface Layer is governing input and output process of database communication from any other micro services. In this abstraction layer, this repository will provide the API for communication with the following tables: 
 
 - content-category (master table)
 - content-metadata (transactional table with one of the foreign key comes from content-category table)
@@ -73,7 +73,7 @@ The commit message should be structured as follows:
 ```bash
 CM-21 feat(dbid): allow provided config object to extend other configs
 
-cm-22 BREAKING CHANGE(dbid): redirect old API request service page to new version
+CM-22 BREAKING CHANGE(dbid): redirect old API request service page to new version
 ```
 
 ### Revert
