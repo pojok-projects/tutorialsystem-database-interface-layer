@@ -50,13 +50,39 @@ class ContentCategoryController extends Controller
         return $model->findOrFail($id);
     }
 
+    public function search(ContentCategoryModel $model, Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        $name = $request->input('name');
+
+        $query = $model->where('name', $name);
+        $count = $query->count();
+
+        if($count == 0) {
+            $message = ', no data found with this query';
+            $result = [];
+        } else {
+            $message = ', data has been found';
+            $result = $query->get();
+        }
+
+        return response()->json([
+            'status' => [
+                'code' => '200',
+                'message' => 'search query has been performed'. $message,
+                'total' => $count,
+            ],
+            'result' => $result,
+        ], 200);
+    }
+
     public function update(ContentCategoryModel $model, Request $request, string $id)
     {
         $query = $model->findOrFail($id);
-        $title = $request->input('title');
-
-        $query->title = $title;
-        $query->save();
+        $query->update($request->all());
 
         return response()->json([
             'status' => [
