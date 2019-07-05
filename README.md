@@ -13,23 +13,26 @@ As the result of this service, the Input and Output query into content-category 
 ![RESTAPI.jpg](images/RESTAPI.jpg)
 
 ## API END POINT
-* http://localhost/v1
+* http://example.com/v1
 
-## Table Structure endpoints
-| URL                            | Method | INFO              | Fields  |
-| ------------------------------ | ------ | ----------------- | ------- |
-| `content/metadata`             | GET    | Get All Data      | -       |
-| `content/metadata/store`       | POST   | Save Data         | -       |
-| `content/metadata/{id}`        | GET    | Get Data by ID    | -       |
-| `content/metadata/search`      | POST   | Search Data Query | -       |
-| `content/metadata/update/{id}` | POST   | Update Data by ID | -       |
-| `content/metadata/delete/{id}` | POST   | Delete Data by ID | -       |
-| `content/category`             | GET    | Get All Data      | -       |
-| `content/category/store`       | POST   | Save Data         | -       |
-| `content/category/{id}`        | GET    | Get Data by ID    | -       |
-| `content/category/search`      | POST   | Search Data Query | `title` |
-| `content/category/update/{id}` | POST   | Update Data by ID | -       |
-| `content/category/delete/{id}` | POST   | Delete Data by ID | -       |
+## API Docs
+* https://dbil.docs.apiary.io/
+
+## Table Structure End Points
+| URL                            | Method | INFO              |
+| ------------------------------ | ------ | ----------------- |
+| `content/metadata`             | GET    | Get All Data      |
+| `content/metadata/store`       | POST   | Save Data         |
+| `content/metadata/{id}`        | GET    | Get Data by ID    |
+| `content/metadata/search`      | POST   | Search Data Query |
+| `content/metadata/update/{id}` | POST   | Update Data by ID |
+| `content/metadata/delete/{id}` | POST   | Delete Data by ID |
+| `content/category`             | GET    | Get All Data      |
+| `content/category/store`       | POST   | Save Data         |
+| `content/category/{id}`        | GET    | Get Data by ID    |
+| `content/category/search`      | POST   | Search Data Query |
+| `content/category/update/{id}` | POST   | Update Data by ID |
+| `content/category/delete/{id}` | POST   | Delete Data by ID |
 
 
 ## Example screen shots of API invocations
@@ -107,9 +110,9 @@ The scope should be the name of the component package affected (as perceived by 
 
 The following is the list of supported scopes:
 
-| Short Code | Components                                      |
-| :--------- | :---------------------------------------------- |
-| dbid       | Database Interface Layer                        |
-| test       | Test automation                                 |
-| doc        | Documentation                                   |
+| Short Code | Components               |
+| :--------- | :----------------------- |
+| dbid       | Database Interface Layer |
+| test       | Test automation          |
+| doc        | Documentation            |
 ... keep adding above list
