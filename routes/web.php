@@ -21,13 +21,15 @@ $router->group(['prefix' => 'v1/'], function ($app) {
     $app->get('content/metadata', 'ContentMetadataController@index');
     $app->post('content/metadata/store', 'ContentMetadataController@store');
     $app->get('content/metadata/{id}', 'ContentMetadataController@show');
-    $app->put('content/metadata/update/{id}', 'ContentMetadataController@update');
-    $app->delete('content/metadata/delete/{id}', 'ContentMetadataController@delete');
+    $app->post('content/metadata/search', 'ContentMetadataController@search');
+    $app->post('content/metadata/update/{id}', 'ContentMetadataController@update');
+    $app->post('content/metadata/delete/{id}', 'ContentMetadataController@delete');
 
     // Content Category
     $app->get('content/category', 'ContentCategoryController@index');
     $app->post('content/category/store', 'ContentCategoryController@store');
     $app->get('content/category/{id}', 'ContentCategoryController@show');
-    $app->put('content/category/update/{id}', 'ContentCategoryController@update');
-    $app->delete('content/category/delete/{id}', 'ContentCategoryController@delete');
+    $app->post('content/category/search', 'ContentCategoryController@search');
+    $app->post('content/category/update/{id}', 'ContentCategoryController@update');
+    $app->post('content/category/delete/{id}', 'ContentCategoryController@delete');
 });
