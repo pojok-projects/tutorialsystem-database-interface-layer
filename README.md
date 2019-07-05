@@ -16,18 +16,21 @@ As the result of this service, the Input and Output query into content-category 
 * http://localhost/v1
 
 ## Table Structure endpoints
-| URL                            | Method | Type |
-| ------------------------------ | ------ | ---- |
-| `content/metadata`             | GET    | JSON |
-| `content/metadata/store`       | POST   | JSON |
-| `content/metadata/{id}`        | GET    | JSON |
-| `content/metadata/update/{id}` | PUT    | JSON |
-| `content/metadata/delete/{id}` | DELETE | JSON |
-| `content/category`             | GET    | JSON |
-| `content/category/store`       | POST   | JSON |
-| `content/category/{id}`        | GET    | JSON |
-| `content/category/update/{id}` | PUT    | JSON |
-| `content/category/delete/{id}` | DELETE | JSON |
+| URL                            | Method | INFO              | Fields  |
+| ------------------------------ | ------ | ----------------- | ------- |
+| `content/metadata`             | GET    | Get All Data      | -       |
+| `content/metadata/store`       | POST   | Save Data         | -       |
+| `content/metadata/{id}`        | GET    | Get Data by ID    | -       |
+| `content/metadata/search`      | POST   | Search Data Query | -       |
+| `content/metadata/update/{id}` | POST   | Update Data by ID | -       |
+| `content/metadata/delete/{id}` | POST   | Delete Data by ID | -       |
+| `content/category`             | GET    | Get All Data      | -       |
+| `content/category/store`       | POST   | Save Data         | -       |
+| `content/category/{id}`        | GET    | Get Data by ID    | -       |
+| `content/category/search`      | POST   | Search Data Query | `title` |
+| `content/category/update/{id}` | POST   | Update Data by ID | -       |
+| `content/category/delete/{id}` | POST   | Delete Data by ID | -       |
+
 
 ## Example screen shots of API invocations
 
