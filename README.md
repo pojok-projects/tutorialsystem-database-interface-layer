@@ -10,7 +10,7 @@ Database Interface Layer is governing input and output process of database commu
 As the result of this service, the Input and Output query into content-category and content-metadata tables will be provided as rest APIs.
 
 
-![RESTAPI.jpg](images/RESTAPI.jpg)
+![RESTAPI.jpg](images/Content_Manager.png)
 
 ## API END POINT
 * http://example.com/v1
