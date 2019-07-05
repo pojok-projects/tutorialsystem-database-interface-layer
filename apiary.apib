@@ -122,3 +122,49 @@ END POINT API Database to DynamoDB
                 }
             ]
         }
+        
+## Update Content Category by ID [/content/category/update/bae04ac0-234a-431a-bed4-0bbc7026aa1c]
+
+**Endpoint Path:** `/content/category/update/{id}`
+
+### Requests
+| Parameter | type | Description |
+| -- | --- | -- |
+| `name` | string | name of content category |
+| `description` | string | description of content category |
+
+### Example [POST]
+    
++ Request (application/json)
+
+        {
+           "name": "Action 2",
+           "description": "Movie Action 2"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been updated"
+            },
+            "result": {
+                "id": "bae04ac0-234a-431a-bed4-0bbc7026aa1c"
+            }
+        }
+        
+## Delete Content Category by ID [/content/category/delete/bae04ac0-234a-431a-bed4-0bbc7026aa1c]
+
+**Endpoint Path:** `/content/category/delete/{id}`
+
+### Example [POST]
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been deleted"
+            }
+        }
