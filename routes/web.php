@@ -32,4 +32,11 @@ $router->group(['prefix' => 'v1/'], function ($app) {
     $app->post('content/category/search', 'ContentCategoryController@search');
     $app->post('content/category/update/{id}', 'ContentCategoryController@update');
     $app->post('content/category/delete/{id}', 'ContentCategoryController@delete');
+
+    // Content Comment
+    $app->get('content/comment/{metadataid}', 'ContentCategoryController@index');
+    $app->post('content/comment/store', 'ContentCategoryController@store');
+    $app->get('content/comment/{id}', 'ContentCategoryController@show');
+    $app->post('content/comment/update/{id}', 'ContentCategoryController@update');
+    $app->post('content/comment/delete/{id}', 'ContentCategoryController@delete');     
 });
