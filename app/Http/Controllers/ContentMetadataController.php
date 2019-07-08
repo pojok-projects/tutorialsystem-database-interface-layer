@@ -49,7 +49,6 @@ class ContentMetadataController extends Controller
             'video_resolution'      => 'required',
             'video_duration'        => 'required',
             'video_viewers'         => 'required',
-            'video_comments'        => 'required',
             'video_likes'           => 'required',
             'video_dislikes'        => 'required',
             'video_users_likes'     => 'required',
@@ -70,7 +69,6 @@ class ContentMetadataController extends Controller
         $video_resolution       = $request->input('video_resolution');
         $video_duration         = $request->input('video_duration');
         $video_viewers          = $request->input('video_viewers');
-        $video_comments         = $request->input('video_comments');
         $video_likes            = $request->input('video_likes');
         $video_dislikes         = $request->input('video_dislikes');
         $video_users_likes      = $request->input('video_users_likes');
@@ -92,7 +90,6 @@ class ContentMetadataController extends Controller
         $query->video_resolution        = $video_resolution;
         $query->video_duration          = $video_duration;
         $query->video_viewers           = $video_viewers;
-        $query->video_comments          = $video_comments;
         $query->video_likes             = $video_likes;
         $query->video_dislikes          = $video_dislikes;
         $query->video_users_likes       = $video_users_likes;
@@ -132,8 +129,8 @@ class ContentMetadataController extends Controller
         $query_request_raw = $request->input('query');
 
         // Parse Request
-        $query_request = urldecode($query_request_raw);
-        $query_build = str_replace('"', '', $query_request);
+        $query_request  = urldecode($query_request_raw);
+        $query_build    = substr($query_request, 1, -1);
         
         // Array for Where Collection
         $query_eloquent = [];

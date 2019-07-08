@@ -20,20 +20,25 @@ See Red highlight below for the scope of this repository.
 * https://dbil.docs.apiary.io/
 
 ## Table Structure End Points
-| URL                            | Method | INFO              |
-| ------------------------------ | ------ | ----------------- |
-| `content/metadata`             | GET    | Get All Data      |
-| `content/metadata/store`       | POST   | Save Data         |
-| `content/metadata/{id}`        | GET    | Get Data by ID    |
-| `content/metadata/search`      | POST   | Search Data Query |
-| `content/metadata/update/{id}` | POST   | Update Data by ID |
-| `content/metadata/delete/{id}` | POST   | Delete Data by ID |
-| `content/category`             | GET    | Get All Data      |
-| `content/category/store`       | POST   | Save Data         |
-| `content/category/{id}`        | GET    | Get Data by ID    |
-| `content/category/search`      | POST   | Search Data Query |
-| `content/category/update/{id}` | POST   | Update Data by ID |
-| `content/category/delete/{id}` | POST   | Delete Data by ID |
+| URL                             | Method | INFO                    |
+| ------------------------------- | ------ | ----------------------- |
+| `content/metadata`              | GET    | Get All Data            |
+| `content/metadata/store`        | POST   | Save Data               |
+| `content/metadata/{id}`         | GET    | Get Data by ID          |
+| `content/metadata/search`       | POST   | Search Data Query       |
+| `content/metadata/update/{id}`  | POST   | Update Data by ID       |
+| `content/metadata/delete/{id}`  | POST   | Delete Data by ID       |
+| `content/category`              | GET    | Get All Data            |
+| `content/category/store`        | POST   | Save Data               |
+| `content/category/{id}`         | GET    | Get Data by ID          |
+| `content/category/search`       | POST   | Search Data Query       |
+| `content/category/update/{id}`  | POST   | Update Data by ID       |
+| `content/category/delete/{id}`  | POST   | Delete Data by ID       |
+| `content/comment/metadata/{id}` | GET    | Get Data by Metadata ID |
+| `content/comment/store`         | POST   | Save Data               |
+| `content/comment/{id}`          | GET    | Get Data by ID          |
+| `content/comment/update/{id}`   | POST   | Update Data by ID       |
+| `content/comment/delete/{id}`   | POST   | Delete Data by ID       |
 
 
 ## Example screen shots of API invocations
