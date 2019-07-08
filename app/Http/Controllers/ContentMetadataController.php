@@ -129,8 +129,8 @@ class ContentMetadataController extends Controller
         $query_request_raw = $request->input('query');
 
         // Parse Request
-        $query_request = urldecode($query_request_raw);
-        $query_build = str_replace('"', '', $query_request);
+        $query_request  = urldecode($query_request_raw);
+        $query_build    = substr($query_request, 1, -1);
         
         // Array for Where Collection
         $query_eloquent = [];
