@@ -437,3 +437,139 @@ END POINT API Database to DynamoDB
                 "message": "data has been deleted"
             }
         }
+
+## List All Content Comment [/content/comment/metadata/83f75217-bcaf-415f-be53-8ca34a5b16be]
+
+**Endpoint Path:** `/content/comment/metadata/{id}`
+
+### Example [GET]
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "search query has been performed, data has been found",
+                "total": 2
+            },
+            "result": [
+                {
+                    "reply_id": null,
+                    "updated_at": "2019-07-08T15:06:47+07:00",
+                    "user_id": "123",
+                    "metadata_id": "83f75217-bcaf-415f-be53-8ca34a5b16be",
+                    "created_at": "2019-07-08T15:04:52+07:00",
+                    "id": "b14571d3-ccc4-4d0a-977f-4ce6fdfc6b1d",
+                    "message": "this just test"
+                },
+                {
+                    "reply_id": "b14571d3-ccc4-4d0a-977f-4ce6fdfc6b1d",
+                    "updated_at": "2019-07-08T15:07:48+07:00",
+                    "user_id": "321",
+                    "metadata_id": "83f75217-bcaf-415f-be53-8ca34a5b16be",
+                    "created_at": "2019-07-08T15:05:43+07:00",
+                    "id": "5ea23f47-94ab-4a38-88e4-a008bb2df23a",
+                    "message": "this just reply test"
+                }
+            ]
+        }
+
+## Create a New Content Comment [/content/comment/store]
+
+**Endpoint Path:** `/content/comment/store`
+
+### Requests
+| Parameter     | type   | Description                                               |
+| ------------- | ------ | --------------------------------------------------------- |
+| `metadata_id` | string | Metadata ID from Content Metadata                         |
+| `user_id`     | string | User ID                                                   |
+| `reply_id`    | string | ID From Comment, if they reply another comment (Optional) |
+| `message`     | string | Reply Message                                             |
+
+### Example [POST]
+    
++ Request (application/json)
+
+        {
+            "metadata_id": "83f75217-bcaf-415f-be53-8ca34a5b16be",
+            "user_id": "123",
+            "message": "this just test"
+        }
+
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been saved"
+            },
+            "result": {
+                "id": "b14571d3-ccc4-4d0a-977f-4ce6fdfc6b1d"
+            }
+        }
+
+## Get Comment by ID [/content/comment/83f75217-bcaf-415f-be53-8ca34a5b16be]
+
+**Endpoint Path:** `/content/comment/{id}`
+
+### Example [GET]
+
++ Response 200 (application/json)
+
+        {
+            "reply_id": "b14571d3-ccc4-4d0a-977f-4ce6fdfc6b1d",
+            "updated_at": "2019-07-08T15:07:48+07:00",
+            "user_id": "321",
+            "metadata_id": "83f75217-bcaf-415f-be53-8ca34a5b16be",
+            "created_at": "2019-07-08T15:05:43+07:00",
+            "id": "5ea23f47-94ab-4a38-88e4-a008bb2df23a",
+            "message": "this just reply test"
+        }
+
+## Update Content Comment by ID [/content/comment/update/b14571d3-ccc4-4d0a-977f-4ce6fdfc6b1d]
+
+**Endpoint Path:** `/content/comment/update/{id}`
+
+### Requests
+| Parameter     | type   | Description                                               |
+| ------------- | ------ | --------------------------------------------------------- |
+| `metadata_id` | string | Metadata ID from Content Metadata                         |
+| `user_id`     | string | User ID                                                   |
+| `reply_id`    | string | ID From Comment, if they reply another comment (Optional) |
+| `message`     | string | Reply Message                                             |
+
+### Example [POST]
+    
++ Request (application/json)
+
+        {
+            "metadata_id": "83f75217-bcaf-415f-1234-8ca34a5b16be"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been updated"
+            },
+            "result": {
+                "id": "b14571d3-ccc4-4d0a-977f-4ce6fdfc6b1d"
+            }
+        }
+        
+## Delete Content Comment by ID [/content/metadata/delete/b14571d3-ccc4-4d0a-977f-4ce6fdfc6b1d]
+
+**Endpoint Path:** `/content/comment/delete/{id}`
+
+### Example [POST]
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been deleted"
+            }
+        }
