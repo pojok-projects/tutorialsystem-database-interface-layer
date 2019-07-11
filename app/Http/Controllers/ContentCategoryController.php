@@ -15,7 +15,24 @@ class ContentCategoryController extends Controller
      */
     public function index(ContentCategoryModel $model, Request $request)
     {
-        return $model->all();
+        $count = $model->count();
+
+        if($count == 0) {
+            $message = ', no data found with this query';
+            $result = [];
+        } else {
+            $message = ', data has been found';
+            $result = $model->all();
+        }
+
+        return response()->json([
+            'status' => [
+                'code' => '200',
+                'message' => 'index list query has been performed'. $message,
+                'total' => $count,
+            ],
+            'result' => $result,
+        ], 200);
     }
 
     public function store(Request $request)
