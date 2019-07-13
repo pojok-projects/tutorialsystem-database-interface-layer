@@ -61,6 +61,46 @@ return [
             'OnDemand'           => false,
         ],
     ],
+    [
+        'TableName'             => 'PlaylistCategory',
+        'AttributeDefinitions'  => [
+            [
+                'AttributeName' => 'id',
+                'AttributeType' => 'S',
+            ],
+        ],
+        'KeySchema'             => [
+            [
+                'AttributeName' => 'id',
+                'KeyType'       => 'HASH',
+            ],
+        ],
+        'ProvisionedThroughput' => [
+            'ReadCapacityUnits'  => 10,
+            'WriteCapacityUnits' => 20,
+            'OnDemand'           => false,
+        ],
+    ],
+    [
+        'TableName'             => 'Playlists',
+        'AttributeDefinitions'  => [
+            [
+                'AttributeName' => 'id',
+                'AttributeType' => 'S',
+            ],
+        ],
+        'KeySchema'             => [
+            [
+                'AttributeName' => 'id',
+                'KeyType'       => 'HASH',
+            ],
+        ],
+        'ProvisionedThroughput' => [
+            'ReadCapacityUnits'  => 10,
+            'WriteCapacityUnits' => 20,
+            'OnDemand'           => false,
+        ],
+    ],
 
 
 ];
