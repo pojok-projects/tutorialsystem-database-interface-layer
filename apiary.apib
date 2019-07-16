@@ -437,7 +437,7 @@ END POINT API Database to DynamoDB
                 "message": "data has been deleted"
             }
         }
-
+        
 ## List All Content Comment [/content/comment/metadata/83f75217-bcaf-415f-be53-8ca34a5b16be]
 
 **Endpoint Path:** `/content/comment/metadata/{id}`
@@ -562,6 +562,346 @@ END POINT API Database to DynamoDB
 ## Delete Content Comment by ID [/content/metadata/delete/b14571d3-ccc4-4d0a-977f-4ce6fdfc6b1d]
 
 **Endpoint Path:** `/content/comment/delete/{id}`
+
+### Example [POST]
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been deleted"
+            }
+        }        
+        
+## List All Content Playlists Category [/content/playlists/category]
+
+**Endpoint Path:** `content/playlists/category`
+
+### Example [GET]
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "index list query has been performed, data has been found",
+                "total": 1
+            },
+            "result": [
+                {
+                    "updated_at": "2019-07-16T17:26:37+07:00",
+                    "user_id": 123,
+                    "description": "Step By Step Membuat Node JS",
+                    "created_at": "2019-07-16T17:26:37+07:00",
+                    "id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
+                    "title": "Tutorial Node JS Untuk Pemula",
+                    "status": "publik"
+                }
+            ]
+        }
+
+
+## Create a New Content Playlists Category [/content/playlists/category/store]
+
+**Endpoint Path:** `/content/playlists/category/store`
+
+### Requests
+| Parameter | type | Description |
+| -- | --- | -- |
+| `user_id` | string | User ID |
+| `title` | string | title of content playlists category |
+| `description` | string | description of content playlists category |
+| `status` | string | `publik|user|pribadi` |
+
+### Example [POST]
+    
++ Request (application/json)
+
+        {
+            "user_id": 123,
+            "title": "Tutorial Node JS Untuk Pemula",
+            "description": "Step By Step Membuat Node JS",
+            "status": "publik"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been saved"
+            },
+            "result": {
+                "id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e"
+            }
+        }
+        
+## Get Content Playlists Category by ID [/content/playlists/category/a02d33c3-e82e-4df7-be1f-c01a943ad55e]
+
+**Endpoint Path:** `/content/playlists/category/{id}`
+
+### Example [GET]
+
++ Response 200 (application/json)
+
+        {
+            "updated_at": "2019-07-16T17:26:37+07:00",
+            "user_id": 123,
+            "description": "Step By Step Membuat Node JS",
+            "created_at": "2019-07-16T17:26:37+07:00",
+            "id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
+            "title": "Tutorial Node JS Untuk Pemula",
+            "status": "publik"
+        }
+
+## Search Content Playlists Category [/content/playlists/category/search]
+
+**Endpoint Path:** `/content/playlists/category/search`
+
+### Requests
+| Parameter | type | Description |
+| -- | --- | -- |
+| `title` | string | title of content playlists category |
+
+### Example [POST]
+    
++ Request (application/json)
+
+        {
+            "title": "Tutorial Node JS Untuk Pemula"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "search query has been performed, data has been found",
+                "total": 1
+            },
+            "result": [
+                {
+                    "updated_at": "2019-07-16T17:26:37+07:00",
+                    "user_id": 123,
+                    "description": "Step By Step Membuat Node JS",
+                    "created_at": "2019-07-16T17:26:37+07:00",
+                    "id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
+                    "title": "Tutorial Node JS Untuk Pemula",
+                    "status": "publik"
+                }
+            ]
+        }
+        
+## Update Content Playlists Category by ID [/content/playlists/category/update/a02d33c3-e82e-4df7-be1f-c01a943ad55e]
+
+**Endpoint Path:** `/content/playlists/category/update/{id}`
+
+### Requests
+| Parameter | type | Description |
+| -- | --- | -- |
+| `user_id` | string | User ID |
+| `title` | string | title of content playlists category |
+| `description` | string | description of content playlists category |
+| `status` | string | `publik|user|pribadi` |
+
+### Example [POST]
+    
++ Request (application/json)
+
+        {
+            "title": "Tutorial Node JS"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been updated"
+            },
+            "result": {
+                "id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e"
+            }
+        }
+        
+## Delete Content Playlists Category by ID [/content/playlists/category/delete/a02d33c3-e82e-4df7-be1f-c01a943ad55e]
+
+**Endpoint Path:** `/content/playlists/category/delete/{id}`
+
+### Example [POST]
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been deleted"
+            }
+        }
+
+## List All Content Playlists [/content/playlists]
+
+**Endpoint Path:** `content/playlists`
+
+### Example [GET]
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "index list query has been performed, data has been found",
+                "total": 1
+            },
+            "result": [
+                {
+                    "updated_at": "2019-07-16T18:21:42+07:00",
+                    "user_id": 123,
+                    "metadata_id": "83f75217-bcaf-415f-be53-8ca34a5b16be",
+                    "created_at": "2019-07-16T18:21:42+07:00",
+                    "id": "908244fb-3298-48ac-9d80-ce454782125f",
+                    "playlistcategory_id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
+                    "last_watch": 60,
+                    "order_list": 1
+                }
+            ]
+        }
+
+
+## Create a New Content Playlists Category [/content/playlists/store]
+
+**Endpoint Path:** `/content/playlists/store`
+
+### Requests
+| Parameter | type | Description |
+| -- | --- | -- |
+| `user_id` | string | User ID |
+| `playlistcategory_id` | string | ID From content playlists category |
+| `metadata_id` | string | ID From content metadata |
+| `order_list` | int | (Optional) Order Playlist |
+| `last_watch` | int | (Optional) Remember Last Watch `in second` |
+
+### Example [POST]
+    
++ Request (application/json)
+
+        {
+            "user_id": 123,
+            "playlistcategory_id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
+            "metadata_id": "83f75217-bcaf-415f-be53-8ca34a5b16be",
+            "order_list": 1,
+            "last_watch": 60
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been saved"
+            },
+            "result": {
+                "id": "908244fb-3298-48ac-9d80-ce454782125f"
+            }
+        }
+  
+
+
+## Get Content Playlists by ID [/content/playlists/908244fb-3298-48ac-9d80-ce454782125f]
+
+**Endpoint Path:** `/content/playlists/{id}`
+
+### Important
+* `next` and `previous` will work, only if `order_list` has been set
+* return null if `next` and `previous` data not found
+
+### Response
+| Parameter | type | Description |
+| -- | --- | -- |
+| `playlist` | array | Playlist Now |
+| `next` | array | Playlist Next |
+| `previous` | array | Playlist Previous |
+
+### Example [GET]
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been saved"
+            },
+            "result": {
+                "playlist": {
+                    "updated_at": "2019-07-16T18:36:24+07:00",
+                    "user_id": 123,
+                    "metadata_id": "83f75217-bcaf-415f-be53-8ca34a5b16be",
+                    "created_at": "2019-07-16T18:36:24+07:00",
+                    "id": "a371fd4b-f829-4c3f-84e7-f67ba94b9763",
+                    "playlistcategory_id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
+                    "last_watch": 60,
+                    "order_list": 2
+                },
+                "next": {
+                    "updated_at": "2019-07-16T18:36:30+07:00",
+                    "user_id": 123,
+                    "metadata_id": "83f75217-bcaf-415f-be53-8ca34a5b16be",
+                    "created_at": "2019-07-16T18:36:30+07:00",
+                    "id": "972070df-16fb-4c47-93c8-7690de1ac5fc",
+                    "playlistcategory_id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
+                    "last_watch": 60,
+                    "order_list": 3
+                },
+                "previous": {
+                    "updated_at": "2019-07-16T19:05:33+07:00",
+                    "user_id": 123,
+                    "metadata_id": "83f75217-bcaf-415f-be53-8ca34a5b16be",
+                    "created_at": "2019-07-16T19:05:33+07:00",
+                    "id": "80e7a905-4ea0-4184-a40f-814394fe653a",
+                    "playlistcategory_id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
+                    "last_watch": 60,
+                    "order_list": 1
+                }
+            }
+        }
+
+## Update Content Playlists by ID [/content/playlists/update/908244fb-3298-48ac-9d80-ce454782125f]
+
+**Endpoint Path:** `/content/playlists/update/{id}`
+
+### Requests
+| Parameter | type | Description |
+| -- | --- | -- |
+| `user_id` | string | User ID |
+| `playlistcategory_id` | string | ID From content playlists category |
+| `metadata_id` | string | ID From content metadata |
+| `order_list` | int | (Optional) Order Playlist |
+| `last_watch` | int | (Optional) Remember Last Watch `in second` |
+
+### Example [POST]
+    
++ Request (application/json)
+
+        {
+            "last_watch": 120
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been updated"
+            },
+            "result": {
+                "id": "908244fb-3298-48ac-9d80-ce454782125f"
+            }
+        }
+ 
+## Delete Content Playlists by ID [/content/playlists/delete/908244fb-3298-48ac-9d80-ce454782125f]
+
+**Endpoint Path:** `/content/playlists/delete/{id}`
 
 ### Example [POST]
 
