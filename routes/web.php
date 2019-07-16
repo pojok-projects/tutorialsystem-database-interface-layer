@@ -38,5 +38,24 @@ $router->group(['prefix' => 'v1/'], function ($app) {
     $app->post('content/comment/store', 'ContentCommentController@store');
     $app->get('content/comment/{id}', 'ContentCommentController@show');
     $app->post('content/comment/update/{id}', 'ContentCommentController@update');
-    $app->post('content/comment/delete/{id}', 'ContentCommentController@delete');     
+    $app->post('content/comment/delete/{id}', 'ContentCommentController@delete');
+
+    // Content Playlists & Category
+    $app->get('content/playlists', 'PlaylistsController@index');
+    $app->get('content/playlists/category', 'PlaylistCategoryController@index');
+
+    $app->post('content/playlists/store', 'PlaylistsController@store');
+    $app->post('content/playlists/category/store', 'PlaylistCategoryController@store');
+
+    $app->get('content/playlists/{id}', 'PlaylistsController@show');
+    $app->get('content/playlists/category/{id}', 'PlaylistCategoryController@show');
+
+    $app->post('content/playlists/search', 'PlaylistsController@search');
+    $app->post('content/playlists/category/search', 'PlaylistCategoryController@search');
+
+    $app->post('content/playlists/update/{id}', 'PlaylistsController@update');
+    $app->post('content/playlists/category/update/{id}', 'PlaylistCategoryController@update');
+
+    $app->post('content/playlists/delete/{id}', 'PlaylistsController@delete');
+    $app->post('content/playlists/category/delete/{id}', 'PlaylistCategoryController@delete');
 });
