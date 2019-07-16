@@ -18,27 +18,41 @@ As the result of this service, the Input and Output query into content-category 
 ## API Docs
 * https://dbil.docs.apiary.io/
 
-## Table Structure End Points
-| URL                             | Method | INFO                    |
-| ------------------------------- | ------ | ----------------------- |
-| `content/metadata`              | GET    | Get All Data            |
-| `content/metadata/store`        | POST   | Save Data               |
-| `content/metadata/{id}`         | GET    | Get Data by ID          |
-| `content/metadata/search`       | POST   | Search Data Query       |
-| `content/metadata/update/{id}`  | POST   | Update Data by ID       |
-| `content/metadata/delete/{id}`  | POST   | Delete Data by ID       |
-| `content/category`              | GET    | Get All Data            |
-| `content/category/store`        | POST   | Save Data               |
-| `content/category/{id}`         | GET    | Get Data by ID          |
-| `content/category/search`       | POST   | Search Data Query       |
-| `content/category/update/{id}`  | POST   | Update Data by ID       |
-| `content/category/delete/{id}`  | POST   | Delete Data by ID       |
-| `content/comment/metadata/{id}` | GET    | Get Data by Metadata ID |
-| `content/comment/store`         | POST   | Save Data               |
-| `content/comment/{id}`          | GET    | Get Data by ID          |
-| `content/comment/update/{id}`   | POST   | Update Data by ID       |
-| `content/comment/delete/{id}`   | POST   | Delete Data by ID       |
+## API DB Diagram
+* https://dbdiagram.io/d/5d28c8f8ced98361d6dc9bab
 
+## Table Structure End Points
+| URL                                      | Method | INFO                    |
+| ---------------------------------------- | ------ | ----------------------- |
+| `content/metadata`                       | GET    | Get All Data            |
+| `content/metadata/store`                 | POST   | Save Data               |
+| `content/metadata/{id}`                  | GET    | Get Data by ID          |
+| `content/metadata/search`                | POST   | Search Data Query       |
+| `content/metadata/update/{id}`           | POST   | Update Data by ID       |
+| `content/metadata/delete/{id}`           | POST   | Delete Data by ID       |
+| `content/category`                       | GET    | Get All Data            |
+| `content/category/store`                 | POST   | Save Data               |
+| `content/category/{id}`                  | GET    | Get Data by ID          |
+| `content/category/search`                | POST   | Search Data Query       |
+| `content/category/update/{id}`           | POST   | Update Data by ID       |
+| `content/category/delete/{id}`           | POST   | Delete Data by ID       |
+| `content/comment/metadata/{id}`          | GET    | Get Data by Metadata ID |
+| `content/comment/store`                  | POST   | Save Data               |
+| `content/comment/{id}`                   | GET    | Get Data by ID          |
+| `content/comment/update/{id}`            | POST   | Update Data by ID       |
+| `content/comment/delete/{id}`            | POST   | Delete Data by ID       |
+| `content/playlists`                      | GET    | Get All Data            |
+| `content/playlists/store`                | POST   | Save Data               |
+| `content/playlists/{id}`                 | GET    | Get Data by ID          |
+| `content/playlists/search`               | POST   | Search Data Query       |
+| `content/playlists/update/{id}`          | POST   | Update Data by ID       |
+| `content/playlists/delete/{id}`          | POST   | Delete Data by ID       |
+| `content/playlists/category`             | GET    | Get All Data            |
+| `content/playlists/category/store`       | POST   | Save Data               |
+| `content/playlists/category/{id}`        | GET    | Get Data by ID          |
+| `content/playlists/category/search`      | POST   | Search Data Query       |
+| `content/playlists/category/update/{id}` | POST   | Update Data by ID       |
+| `content/playlists/category/delete/{id}` | POST   | Delete Data by ID       |
 
 ## Example screen shots of API invocations
 
