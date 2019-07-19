@@ -18,7 +18,6 @@ class ContentMetadataModel extends DynamoDbModel
         'video_resolution',
         'video_duration',
         'video_viewers',
-        'video_dislikes',
         'video_users_likes',
         'video_users_dislikes',
         'video_share',
