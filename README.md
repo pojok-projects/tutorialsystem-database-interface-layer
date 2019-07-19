@@ -14,15 +14,16 @@ See Red highlight below for the scope of this repository.
 ![RESTAPI.jpg](images/Content_Manager_highlight.png)
 
 ## API END POINT
-* http://example.com/v1
+* v1 : http://example.com/v1
 
 ## API Docs
 * https://dbil.docs.apiary.io/
 
 ## API DB Diagram
-* https://dbdiagram.io/d/5d28c8f8ced98361d6dc9bab
+- [x] [Sprint 1](https://dbdiagram.io/d/5d28c8f8ced98361d6dc9bab)
+- [ ] [Sprint 2](https://dbdiagram.io/d/5d2edb4fced98361d6dcbc9f) [We Are Here Now]
 
-## Table Structure End Points
+## Table Structure API End Points
 | URL                                      | Method | INFO                    |
 | ---------------------------------------- | ------ | ----------------------- |
 | `content/metadata`                       | GET    | Get All Data            |
