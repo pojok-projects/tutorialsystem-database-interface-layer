@@ -7,8 +7,8 @@ use BaoPham\DynamoDb\DynamoDbModel;
 class ContentMetadataModel extends DynamoDbModel
 {
     protected $fillable = [
+        'user_id',
         'category_id',
-        'name_uploader',
         'video_title',
         'video_description',
         'video_subtitle',
