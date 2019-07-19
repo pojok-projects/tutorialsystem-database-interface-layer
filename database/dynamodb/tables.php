@@ -4,9 +4,14 @@
  * Name of Table For DynamoDB
  */
 $table_name = [
-    'ContentMetadata',
     'ContentCategory',
     'ContentComment',
+    'ContentDislike',
+    'ContentLike',
+    'ContentMetadata',
+    'ContentMetadataSubtitle',
+    'ContentMetadataVideo',
+    'ContentSubtitle',
     'PlaylistCategory',
     'Playlists'
 ];
