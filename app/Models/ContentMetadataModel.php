@@ -11,7 +11,6 @@ class ContentMetadataModel extends DynamoDbModel
         'category_id',
         'video_title',
         'video_description',
-        'video_subtitle',
         'video_genre',
         'video_viewers',
         'video_share',
