@@ -11,5 +11,5 @@ class ContentSubtitleModel extends DynamoDbModel
         'description',
     ];
 
-    protected $table = 'ContentMetadataVideo';
+    protected $table = 'ContentSubtitle';
 }
