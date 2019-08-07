@@ -13,7 +13,14 @@ $table_name = [
     'ContentMetadataVideo',
     'ContentSubtitle',
     'PlaylistCategory',
-    'Playlists'
+    'Playlists',
+    'User',
+    'UserFollowing',
+    'UserFollower',
+    'UserLikeVideo',
+    'UserDislikeVideo',
+    'UserSavedVideo',
+    'UserHistoryVideo'
 ];
 
 /**
