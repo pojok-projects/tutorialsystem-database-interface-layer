@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 use App\Models\ContentMetadataModel;
+use App\Traits\DndbQuery;
 
 class ContentMetadataController extends Controller
 {
+    // Include Trait inside Controller
+    use DndbQuery;
+
     /**
      * @param ContentMetadataModel $model
      * @param Request $request
@@ -126,34 +130,12 @@ class ContentMetadataController extends Controller
             'query' => 'required',
         ]);
 
-        $query_request_raw = $request->input('query');
+        $query = $request->input('query');
 
-        // Parse Request
-        $query_request  = urldecode($query_request_raw);
-        $query_build    = substr($query_request, 1, -1);
-        
-        // Array for Where Collection
-        $query_eloquent = [];
+        // Parse Function From Trait DndbQuery
+        $query_eloquent = $this->ReqParse($query);
 
-        // Check if Using Multiple Query or Not
-        if(strpos($query_build, ',') !== false) {
-            $query_parse = explode(',', $query_build);
-            
-            // Build to Single Array
-            foreach($query_parse as $query_build_parse) 
-            {
-                $parse_explode = explode('=', $query_build_parse);
-
-                $query_eloquent = array_merge($query_eloquent, array($parse_explode[0] => $parse_explode[1]));
-            }
-
-        } else {
-            $parse_explode = explode('=', $query_build);
-            $query_eloquent = [
-                $parse_explode[0] => $parse_explode[1]
-            ];
-        }
-
+        // Performe Query
         $query = $model->where($query_eloquent);
         $count = $query->count();
 
