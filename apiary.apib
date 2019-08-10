@@ -53,9 +53,9 @@ END POINT API Database to DynamoDB
 **Endpoint Path:** `POST /content/category/store`
 
 ### Requests
-| Parameter | type | Description |
-| -- | --- | -- |
-| `name` | string | name of content category |
+| Parameter         | type       | Description                                                      |
+| ------------------------------- | ------------ | ---------------------------------------------------------------------------------- |
+| `name`                  | string | name of content category               |
 | `description` | string | description of content category |
 
 + Request (application/json)
@@ -190,28 +190,19 @@ END POINT API Database to DynamoDB
             },
             "result": [
                 {
-                    "video_duration": "600",
-                    "video_resolution": "360p, 480p, 720p, 1080p, 1080p HD",
-                    "video_users_likes": "80",
-                    "created_at": "2019-07-05T12:58:16+07:00",
-                    "video_format": "mp4",
-                    "video_share": "5",
-                    "video_dislikes": "2",
-                    "video_downloads": "11",
+                    "id": "81622337-8d48-4d5b-a41d-3f04d157385c",
+                    "user_id": "0490412d-b05c-41be-912a-4aa2e401e572",
                     "video_description": "Tutorial of Programers",
                     "category_id": "bae04ac0-234a-431a-bed4-0bbc7026aa1c",
                     "video_title": "Pojok Programers",
-                    "video_size": "104857600",
-                    "video_comments": "2",
+                    "created_at": "2019-07-05T12:58:16+07:00",
                     "updated_at": "2019-07-05T12:58:16+07:00",
-                    "name_uploader": "Juni Yadi",
-                    "video_likes": "100",
                     "video_subtitle": "English, Indonesia",
                     "video_genre": "Tutorial",
-                    "id": "81622337-8d48-4d5b-a41d-3f04d157385c",
-                    "video_users_dislikes": "2",
-                    "video_saves": "1",
-                    "video_viewers": "10"
+                    "video_saves": null,
+                    "video_share": null,
+                    "video_downloads": null,
+                    "video_viewers": null
                 }
             ]
         }
@@ -221,50 +212,26 @@ END POINT API Database to DynamoDB
 **Endpoint Path:** `POST /content/metadata/store`
 
 ### Requests
-| Parameter              | type   | Description |
-| ---------------------- | ------ | ----------- |
-| `category_id`          | string | ID From Content Category |
-| `name_uploader`        | string | Name of Uploader |
-| `video_title`          | string | Title of Video |
-| `video_description`    | string | Description of Video |
-| `video_subtitle`       | string | Subtitle of Video |
-| `video_genre`          | string | Genre of Video |
-| `video_format`         | string | Format of Video |
-| `video_size`           | int    | Size of Video [using bytes](https://convertlive.com/u/convert/megabytes/to/bytes#100) |
-| `video_resolution`     | string | Resolution of Video |
-| `video_duration`       | int    | Duration of Video [using seconds](https://convertlive.com/c/convert/time) |
-| `video_viewers`        | int    | Viewers of Video |
-| `video_comments`       | int    | Comments of Video |
-| `video_likes`          | int    | Likes of Video |
-| `video_dislikes`       | int    | Dislikes of Video |
-| `video_users_likes`    | int    | Users Likes of Video |
-| `video_users_dislikes` | int    | Users Dislike of Video |
-| `video_share`          | int    | Share of Video |
-| `video_saves`          | int    | Saves of Video |
-| `video_downloads`      | int    | Downloads of Video |
+| Parameter           | type   | Description                   |
+| ------------------- | ------ | ----------------------------- |
+| `user_id`           | string | Id of User                    |
+| `category_id`       | string | ID From Content Category      |
+| `video_title`       | string | Title of Video                |
+| `video_description` | string | Description of Video          |
+| `video_genre`       | string | Genre of Video                |
+| `video_viewers`     | int    | Viewers of Video (Optional)   |
+| `video_share`       | int    | Share of Video (Optional)     |
+| `video_saves`       | int    | Saves of Video (Optional)     |
+| `video_downloads`   | int    | Downloads of Video (Optional) |
 
 + Request (application/json)
 
         {
+            "user_id": "0490412d-b05c-41be-912a-4aa2e401e572",
             "category_id": "bae04ac0-234a-431a-bed4-0bbc7026aa1c",
-            "name_uploader": "Juni Yadi",
             "video_title": "Pojok Programers",
             "video_description": "Tutorial of Programers",
-            "video_subtitle": "English, Indonesia",
-            "video_genre": "Tutorial",
-            "video_format": "mp4",
-            "video_size": "104857600",
-            "video_resolution": "360p, 480p, 720p, 1080p, 1080p HD",
-            "video_duration": "600",
-            "video_viewers": "10",
-            "video_comments": "2",
-            "video_likes": "100",
-            "video_dislikes": "2",
-            "video_users_likes": "80",
-            "video_users_dislikes": "2",
-            "video_share": "5",
-            "video_saves": "1",
-            "video_downloads": "11"
+            "video_genre": "Tutorial"
         }
 
 + Response 200 (application/json)
@@ -286,28 +253,19 @@ END POINT API Database to DynamoDB
 + Response 200 (application/json)
 
         {
-            "video_duration": "600",
-            "video_resolution": "360p, 480p, 720p, 1080p, 1080p HD",
-            "video_users_likes": "80",
-            "created_at": "2019-07-05T12:58:16+07:00",
-            "video_format": "mp4",
-            "video_share": "5",
-            "video_dislikes": "2",
-            "video_downloads": "11",
+            "id": "81622337-8d48-4d5b-a41d-3f04d157385c",
+            "user_id": "0490412d-b05c-41be-912a-4aa2e401e572",
             "video_description": "Tutorial of Programers",
             "category_id": "bae04ac0-234a-431a-bed4-0bbc7026aa1c",
             "video_title": "Pojok Programers",
-            "video_size": "104857600",
-            "video_comments": "2",
+            "created_at": "2019-07-05T12:58:16+07:00",
             "updated_at": "2019-07-05T12:58:16+07:00",
-            "name_uploader": "Juni Yadi",
-            "video_likes": "100",
             "video_subtitle": "English, Indonesia",
             "video_genre": "Tutorial",
-            "id": "81622337-8d48-4d5b-a41d-3f04d157385c",
-            "video_users_dislikes": "2",
-            "video_saves": "1",
-            "video_viewers": "10"
+            "video_saves": null,
+            "video_share": null,
+            "video_downloads": null,
+            "video_viewers": null
         }
 
 ### Search Data [POST /content/metadata/search]
@@ -369,27 +327,7 @@ END POINT API Database to DynamoDB
 **Endpoint Path:** `POST /content/metadata/update/{id}`
 
 ### Requests
-| Parameter              | type   | Description |
-| ---------------------- | ------ | ----------- |
-| `category_id`          | string | ID From Content Category |
-| `name_uploader`        | string | Name of Uploader |
-| `video_title`          | string | Title of Video |
-| `video_description`    | string | Description of Video |
-| `video_subtitle`       | string | Subtitle of Video |
-| `video_genre`          | string | Genre of Video |
-| `video_format`         | string | Format of Video |
-| `video_size`           | int    | Size of Video [using bytes](https://convertlive.com/u/convert/megabytes/to/bytes#100) |
-| `video_resolution`     | string | Resolution of Video |
-| `video_duration`       | int    | Duration of Video [using seconds](https://convertlive.com/c/convert/time) |
-| `video_viewers`        | int    | Viewers of Video |
-| `video_comments`       | int    | Comments of Video |
-| `video_likes`          | int    | Likes of Video |
-| `video_dislikes`       | int    | Dislikes of Video |
-| `video_users_likes`    | int    | Users Likes of Video |
-| `video_users_dislikes` | int    | Users Dislike of Video |
-| `video_share`          | int    | Share of Video |
-| `video_saves`          | int    | Saves of Video |
-| `video_downloads`      | int    | Downloads of Video |
+* Table same as Store Function
 
 + Request (application/json)
 
@@ -412,6 +350,166 @@ END POINT API Database to DynamoDB
 ### Delete Data by ID [POST /content/metadata/delete/81622337-8d48-4d5b-a41d-3f04d157385c]
 
 **Endpoint Path:** `POST /content/metadata/delete/{id}`
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been deleted"
+            }
+        }
+
+
+## Content Metadata Video [/content/metadata/video]
+
+### List All Data [GET]
+
+**Endpoint Path:** `GET /content/metadata/video`
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "index list query has been performed, data has been found",
+                "total": 1
+            },
+            "result": [
+                {
+                    "duration": 30,
+                    "size": 104857600,
+                    "updated_at": "2019-08-10T07:18:50+00:00",
+                    "metadata_id": "81622337-8d48-4d5b-a41d-3f04d157385c",
+                    "format": "mp4",
+                    "created_at": "2019-08-10T07:18:50+00:00",
+                    "id": "9f428229-fda6-4972-9b71-284014c450b7",
+                    "resolution": "1080p"
+                }
+            ]
+        }
+
+### Store Data [POST /content/metadata/video/store]
+
+**Endpoint Path:** `POST /content/metadata/video/store`
+
+### Requests
+| Parameter     | type   | Description                                                                           |
+| ------------- | ------ | ------------------------------------------------------------------------------------- |
+| `metadata_id` | string | ID From Metadata                                                                      |
+| `format`      | string | Format of Video                                                                       |
+| `size`        | int    | Size of Video [using bytes](https://convertlive.com/u/convert/megabytes/to/bytes#100) |
+| `resolution`  | string | Resolution of Video                                                                   |
+| `duration`    | int    | Duration of Video [using seconds](https://convertlive.com/c/convert/time)             |
+
++ Request (application/json)
+
+        {
+            "metadata_id": "81622337-8d48-4d5b-a41d-3f04d157385c",
+            "size": 104857600,
+            "format": "mp4",
+            "resolution": "1080p",
+            "duration": 30
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been saved"
+            },
+            "result": {
+                "id": "9f428229-fda6-4972-9b71-284014c450b7"
+            }
+        }
+        
+### Get Data by ID [GET /content/metadata/video/9f428229-fda6-4972-9b71-284014c450b7]
+
+**Endpoint Path:** `GET /content/metadata/video/{id}`
+
++ Response 200 (application/json)
+
+        {
+            "duration": 30,
+            "size": 104857600,
+            "updated_at": "2019-08-10T07:18:50+00:00",
+            "metadata_id": "81622337-8d48-4d5b-a41d-3f04d157385c",
+            "format": "mp4",
+            "created_at": "2019-08-10T07:18:50+00:00",
+            "id": "9f428229-fda6-4972-9b71-284014c450b7",
+            "resolution": "1080p"
+        }
+
+### Search Data [POST /content/metadata/video/search]
+
+**Endpoint Path:** `POST /content/metadata/video/search`
+
+### Requests
+| Parameter | type   | Description                                |
+| --------- | ------ | ------------------------------------------ |
+| `query`   | string | Based on Table Name and Using `URL Encode` |
+
+### Important
+* Use `Search Query Builder`
+
++ Request (application/json)
+
+        {
+            "query": "%22format%3Dmp4%22"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "search query has been performed, data has been found",
+                "total": 1
+            },
+            "result": [
+                {
+                    "duration": 30,
+                    "size": 104857600,
+                    "updated_at": "2019-08-10T07:18:50+00:00",
+                    "metadata_id": "81622337-8d48-4d5b-a41d-3f04d157385c",
+                    "format": "mp4",
+                    "created_at": "2019-08-10T07:18:50+00:00",
+                    "id": "9f428229-fda6-4972-9b71-284014c450b7",
+                    "resolution": "1080p"
+                }
+            ]
+        }
+        
+### Update Data by ID [POST /content/metadata/video/update/9f428229-fda6-4972-9b71-284014c450b7]
+
+**Endpoint Path:** `POST /content/metadata/video/update/{id}`
+
+### Requests
+* Table same as Store Function
+
++ Request (application/json)
+
+        {
+            "size": 1024,
+            "format": "mkv"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been updated"
+            },
+            "result": {
+                "id": "9f428229-fda6-4972-9b71-284014c450b7"
+            }
+        }
+        
+### Delete Data by ID [POST /content/metadata/video/delete/9f428229-fda6-4972-9b71-284014c450b7]
+
+**Endpoint Path:** `POST /content/metadata/video/delete/{id}`
 
 + Response 200 (application/json)
 
@@ -507,7 +605,7 @@ END POINT API Database to DynamoDB
             "message": "this just reply test"
         }
 
-## Update Data by ID [POST /content/comment/update/b14571d3-ccc4-4d0a-977f-4ce6fdfc6b1d]
+### Update Data by ID [POST /content/comment/update/b14571d3-ccc4-4d0a-977f-4ce6fdfc6b1d]
 
 **Endpoint Path:** `POST /content/comment/update/{id}`
 
@@ -537,7 +635,7 @@ END POINT API Database to DynamoDB
             }
         }
         
-## Delete Data by ID [POST /content/metadata/delete/b14571d3-ccc4-4d0a-977f-4ce6fdfc6b1d]
+### Delete Data by ID [POST /content/metadata/delete/b14571d3-ccc4-4d0a-977f-4ce6fdfc6b1d]
 
 **Endpoint Path:** `POST /content/comment/delete/{id}`
 
@@ -583,12 +681,12 @@ END POINT API Database to DynamoDB
 **Endpoint Path:** `POST /content/playlists/category/store`
 
 ### Requests
-| Parameter | type | Description |
-| -- | --- | -- |
-| `user_id` | string | User ID |
-| `title` | string | title of content playlists category |
+| Parameter         | type     | Description                                                             |
+| ------------------------ | --------- | -------------------------------------------------------------------------------- |
+| `user_id`         | string | User ID                                                                     |
+| `title`             | string | title of content playlists category             |
 | `description` | string | description of content playlists category |
-| `status` | string | `publik|user|pribadi` |
+| `status`           | string | `publik|user|pribadi`                                         |
 
 + Request (application/json)
 
@@ -632,9 +730,9 @@ END POINT API Database to DynamoDB
 **Endpoint Path:** `POST /content/playlists/category/search`
 
 ### Requests
-| Parameter | type | Description |
-| -- | --- | -- |
-| `title` | string | title of content playlists category |
+| Parameter | type   | Description                         |
+| --------- | ------ | ----------------------------------- |
+| `title`   | string | title of content playlists category |
 
 + Request (application/json)
 
@@ -740,13 +838,13 @@ END POINT API Database to DynamoDB
 **Endpoint Path:** `/content/playlists/store`
 
 ### Requests
-| Parameter | type | Description |
-| -- | --- | -- |
-| `user_id` | string | User ID |
-| `playlistcategory_id` | string | ID From content playlists category |
-| `metadata_id` | string | ID From content metadata |
-| `order_list` | int | (Optional) Order Playlist |
-| `last_watch` | int | (Optional) Remember Last Watch `in second` |
+| Parameter                         | type     | Description                                                               |
+| ---------------------------------------- | --------- | ---------------------------------------------------------------------------------- |
+| `user_id`                         | string | User ID                                                                       |
+| `playlistcategory_id` | string | ID From content playlists category                 |
+| `metadata_id`                 | string | ID From content metadata                                     |
+| `order_list`                   | int       | (Optional) Order Playlist                                   |
+| `last_watch`                   | int       | (Optional) Remember Last Watch `in second` |
 
 + Request (application/json)
 
@@ -781,10 +879,10 @@ END POINT API Database to DynamoDB
 * return null if `next` and `previous` data not found
 
 ### Response
-| Parameter | type | Description |
-| -- | --- | -- |
-| `playlist` | array | Playlist Now |
-| `next` | array | Playlist Next |
+| Parameter  | type  | Description       |
+| ---------- | ----- | ----------------- |
+| `playlist` | array | Playlist Now      |
+| `next`     | array | Playlist Next     |
 | `previous` | array | Playlist Previous |
 
 + Response 200 (application/json)
