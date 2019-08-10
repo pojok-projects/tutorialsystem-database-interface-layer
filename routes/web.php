@@ -125,7 +125,6 @@ $router->group(['prefix' => 'v1/'], function ($app) {
     $app->get('user/dislikevideo', 'UserDislikeVideoController@index');
     $app->get('user/savedvideo', 'UserSavedVideoController@index');
     $app->get('user/historyvideo', 'UserHistoryVideoController@index');
-    $app->get('user/historyvideo/{id}', 'UserHistoryVideoController@show');
 
     // Show Routes
     $app->get('user/{id}', 'UserController@show');
@@ -134,6 +133,7 @@ $router->group(['prefix' => 'v1/'], function ($app) {
     $app->get('user/likevideo/{id}', 'UserLikeVideoController@show');
     $app->get('user/dislikevideo/{id}', 'UserDislikeVideoController@show');
     $app->get('user/savedvideo/{id}', 'UserSavedVideoController@show');
+    $app->get('user/historyvideo/{id}', 'UserHistoryVideoController@show');
 
     // Store Routes
     $app->post('user/store', 'UserController@store');
