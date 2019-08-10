@@ -27,8 +27,8 @@ $router->group(['prefix' => 'v1/'], function ($app) {
 
     // Show Routes
     $app->get('content/metadata/{id}', 'ContentMetadataController@show');
-    $app->get('content/metadata/video/{id}', 'ContentMetadataVideoController@index');
-    $app->get('content/metadata/subtitle/{id}', 'ContentMetadataSubtitleController@index');
+    $app->get('content/metadata/video/{id}', 'ContentMetadataVideoController@show');
+    $app->get('content/metadata/subtitle/{id}', 'ContentMetadataSubtitleController@show');
     
     // Search Routes
     $app->post('content/metadata/search', 'ContentMetadataVideoController@search');
