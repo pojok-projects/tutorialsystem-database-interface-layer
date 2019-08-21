@@ -44,7 +44,6 @@ class UserController extends Controller
         $this->validate($request, [
             'name'              => 'required',
             'email'             => 'required',
-            'password'          => 'required',
             'first_name'        => 'required',
             'last_name'         => 'required',
             'birth_date'        => 'required',
@@ -53,7 +52,6 @@ class UserController extends Controller
 
         $name           = $request->input('name');
         $email          = $request->input('email');
-        $password       = $request->input('password');
         $first_name     = $request->input('first_name');
         $last_name      = $request->input('last_name');
         $birth_date     = $request->input('birth_date');
@@ -70,7 +68,6 @@ class UserController extends Controller
         $query->id              = Str::uuid()->toString();
         $query->name            = $name;
         $query->email           = $email;
-        $query->password        = $password; 
         $query->first_name      = $first_name; 
         $query->last_name       = $last_name; 
         $query->birth_date      = $birth_date; 

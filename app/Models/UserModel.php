@@ -9,7 +9,6 @@ class UserModel extends DynamoDbModel
     protected $fillable = [
         'name',
         'email',
-        'password',
         'first_name',
         'last_name',
         'birth_date',
