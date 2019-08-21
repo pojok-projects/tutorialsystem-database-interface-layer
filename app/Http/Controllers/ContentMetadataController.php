@@ -47,6 +47,7 @@ class ContentMetadataController extends Controller
             'video_title'           => 'required',
             'video_description'     => 'required',
             'video_genre'           => 'required',
+            'privacy'               => 'required',
         ]);
 
         $user_id                = $request->input('user_id');
@@ -57,7 +58,8 @@ class ContentMetadataController extends Controller
         $video_viewers          = $request->input('video_viewers') ?? null;
         $video_share            = $request->input('video_share') ?? null;
         $video_saves            = $request->input('video_saves') ?? null;
-        $video_downloads        = $request->input('video_downloads') ?? null;    
+        $video_downloads        = $request->input('video_downloads') ?? null;
+        $privacy                = $request->input('privacy');
 
         $query                          = new ContentMetadataModel();
         $query->id                      = Str::uuid()->toString();
@@ -70,6 +72,7 @@ class ContentMetadataController extends Controller
         $query->video_share             = $video_share;
         $query->video_saves             = $video_saves;
         $query->video_downloads         = $video_downloads;
+        $query->privacy                 = $privacy;
         $query->save();
 
         return response()->json([
