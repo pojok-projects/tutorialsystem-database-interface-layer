@@ -965,3 +965,200 @@ END POINT API Database to DynamoDB
                 "message": "data has been deleted"
             }
         }
+
+
+## User [/user]
+
+### List All Data [GET]
+
+**Endpoint Path:** `GET /user`
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "index list query has been performed, data has been found",
+                "total": 1
+            },
+            "result": [
+                {
+                    "twitter_link": "https://twitter.com/example",
+                    "birth_date": "2019-01-01",
+                    "created_at": "2019-08-21T11:23:46+07:00",
+                    "linkedin_link": "https://www.linkedin.com/example",
+                    "facebook_link": "https://facebook.com/example",
+                    "email": "iniemailpojok@gmail.com",
+                    "photo_profile": "https://aws.s3.example/here/pojokproject.png",
+                    "name": "Pojok Project",
+                    "gender": "male",
+                    "updated_at": "2019-08-21T11:23:46+07:00",
+                    "last_name": "Project",
+                    "about": "optional about",
+                    "first_name": "Pojok",
+                    "id": "91fa1120-17d4-442b-8338-aa3ab7bbc14e",
+                    "website_link": "https://example.com"
+                }
+            ]
+        }
+
+### Store Data [POST /user/store]
+
+**Endpoint Path:** `POST /user/store`
+
+### Requests
+| Parameter       | type   | Status   | Description                     |
+| --------------- | ------ | -------- | ------------------------------- |
+| `name`          | string | required | name of user                    |
+| `email`         | string | required | email of user                   |
+| `first_name`    | string | required | first name of user              |
+| `last_name`     | string | required | last name of user               |
+| `birth_date`    | string | required | birth date of user              |
+| `gender`        | string | required | gender of user (male/female)    |
+| `photo_profile` | string | optional | path of photo profile from user |
+| `about`         | string | optional | about of user                   |
+| `website_link`  | string | optional | website link of user            |
+| `facebook_link` | string | optional | facebook link of user           |
+| `twitter_link`  | string | optional | twitter link of user            |
+| `linkedin_link` | string | optional | linkedin link of user           |
+
++ Request (application/json)
+
+        {
+            "name": "Pojok Project",
+            "email": "iniemailpojok@gmail.com",
+            "first_name": "Pojok",
+            "last_name": "Project",
+            "birth_date": "2019-01-01",
+            "gender": "male",
+            "photo_profile": "https://aws.s3.example/here/pojokproject.png",
+            "about": "optional about",
+            "website_link": "https://example.com",
+            "facebook_link": "https://facebook.com/example",
+            "twitter_link": "https://twitter.com/example",
+            "linkedin_link": "https://www.linkedin.com/example"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been saved"
+            },
+            "result": {
+                "id": "91fa1120-17d4-442b-8338-aa3ab7bbc14e"
+            }
+        }
+        
+### Get Data by ID [GET /user/91fa1120-17d4-442b-8338-aa3ab7bbc14e]
+
+**Endpoint Path:** `GET /user/{id}`
+
++ Response 200 (application/json)
+
+        {
+            "twitter_link": "https://twitter.com/example",
+            "birth_date": "2019-01-01",
+            "created_at": "2019-08-21T11:23:46+07:00",
+            "linkedin_link": "https://www.linkedin.com/example",
+            "facebook_link": "https://facebook.com/example",
+            "email": "iniemailpojok@gmail.com",
+            "photo_profile": "https://aws.s3.example/here/pojokproject.png",
+            "name": "Pojok Project",
+            "gender": "male",
+            "updated_at": "2019-08-21T11:23:46+07:00",
+            "last_name": "Project",
+            "about": "optional about",
+            "first_name": "Pojok",
+            "id": "91fa1120-17d4-442b-8338-aa3ab7bbc14e",
+            "website_link": "https://example.com"
+        }
+
+### Search Data [POST /user/search]
+
+**Endpoint Path:** `POST /user/search`
+
+### Requests
+| Parameter | type   | Description                                |
+| --------- | ------ | ------------------------------------------ |
+| `query`   | string | Based on Table Name and Using `URL Encode` |
+
+### Important
+* Use `Search Query Builder`
+
++ Request (application/json)
+
+        {
+        "query": "%22name%3DPojok Project%22"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "search query has been performed, data has been found",
+                "total": 1
+            },
+            "result": [
+                {
+                    "twitter_link": "https://twitter.com/example",
+                    "birth_date": "2019-01-01",
+                    "created_at": "2019-08-21T11:23:46+07:00",
+                    "linkedin_link": "https://www.linkedin.com/example",
+                    "facebook_link": "https://facebook.com/example",
+                    "email": "iniemailpojok@gmail.com",
+                    "photo_profile": "https://aws.s3.example/here/pojokproject.png",
+                    "name": "Pojok Project",
+                    "gender": "male",
+                    "updated_at": "2019-08-21T11:23:46+07:00",
+                    "last_name": "Project",
+                    "about": "optional about",
+                    "first_name": "Pojok",
+                    "id": "91fa1120-17d4-442b-8338-aa3ab7bbc14e",
+                    "website_link": "https://example.com"
+                }
+            ]
+        }
+        
+### Update Data by ID [POST /user/update/91fa1120-17d4-442b-8338-aa3ab7bbc14e]
+
+**Endpoint Path:** `POST /user/update/{id}`
+
+### Requests
+* Table same as Store Function
+
++ Request (application/json)
+
+        {
+        "email": "pojokan@gmail.com"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been updated"
+            },
+            "result": {
+                "id": "91fa1120-17d4-442b-8338-aa3ab7bbc14e"
+            }
+        }
+        
+### Delete Data by ID [POST /user/delete/91fa1120-17d4-442b-8338-aa3ab7bbc14e]
+
+**Endpoint Path:** `POST /user/delete/{id}`
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been deleted"
+            },
+            "result": {
+                "id": "91fa1120-17d4-442b-8338-aa3ab7bbc14e"
+            }
+        }
