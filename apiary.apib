@@ -31,31 +31,31 @@ END POINT API Database to DynamoDB
 
 + Response 200 (application/json)
 
-        [
-            {
-                "name": "Funny Videos",
-                "description": "Only For Funny",
-                "created_at": "2019-07-04T21:21:01+07:00",
-                "id": "a8486ed6-59da-49c7-9605-466bef6dcd83",
-                "updated_at": "2019-07-04T21:21:01+07:00"
+        {
+            "status": {
+                "code": "200",
+                "message": "index list query has been performed, data has been found",
+                "total": 1
             },
-            {
-                "name": "Funny Videos 223",
-                "description": "Only For Funny 223",
-                "created_at": "2019-07-04T21:27:23+07:00",
-                "id": "cf31fb2e-9d06-49f9-af6f-c708edfe0871",
-                "updated_at": "2019-07-04T22:13:07+07:00"
-            }
-        ]
+            "result": [
+                {
+                    "updated_at": "2019-08-21T10:32:53+07:00",
+                    "created_at": "2019-08-21T10:32:53+07:00",
+                    "description": "Movie Action",
+                    "id": "2f0a68a1-115d-4c24-9173-404638a1fc27",
+                    "name": "Action"
+                }
+            ]
+        }
 
 ### Store Data [POST /content/category/store]
 
 **Endpoint Path:** `POST /content/category/store`
 
 ### Requests
-| Parameter         | type       | Description                                                      |
-| ------------------------------- | ------------ | ---------------------------------------------------------------------------------- |
-| `name`                  | string | name of content category               |
+| Parameter     | type   | Description                     |
+| ------------- | ------ | ------------------------------- |
+| `name`        | string | name of content category        |
 | `description` | string | description of content category |
 
 + Request (application/json)
@@ -73,22 +73,22 @@ END POINT API Database to DynamoDB
                 "message": "data has been saved"
             },
             "result": {
-                "id": "bae04ac0-234a-431a-bed4-0bbc7026aa1c"
+                "id": "2f0a68a1-115d-4c24-9173-404638a1fc27"
             }
         }
         
-### Get Data by ID [GET /content/category/bae04ac0-234a-431a-bed4-0bbc7026aa1c]
+### Get Data by ID [GET /content/category/2f0a68a1-115d-4c24-9173-404638a1fc27]
 
 **Endpoint Path:** `GET /content/category/{id}`
 
 + Response 200 (application/json)
 
         {
-            "name": "Action",
+            "updated_at": "2019-08-21T10:32:53+07:00",
+            "created_at": "2019-08-21T10:32:53+07:00",
             "description": "Movie Action",
-            "created_at": "2019-07-05T09:47:05+07:00",
-            "id": "bae04ac0-234a-431a-bed4-0bbc7026aa1c",
-            "updated_at": "2019-07-05T09:47:05+07:00"
+            "id": "2f0a68a1-115d-4c24-9173-404638a1fc27",
+            "name": "Action"
         }
 
 ### Search Data [POST /content/category/search]
@@ -103,7 +103,7 @@ END POINT API Database to DynamoDB
 + Request (application/json)
 
         {
-           "name": "Action",
+            "name": "Action"
         }
 
 + Response 200 (application/json)
@@ -112,27 +112,20 @@ END POINT API Database to DynamoDB
             "status": {
                 "code": "200",
                 "message": "search query has been performed, data has been found",
-                "total": 2
+                "total": 1
             },
             "result": [
                 {
-                    "name": "Action",
+                    "updated_at": "2019-08-21T10:32:53+07:00",
+                    "created_at": "2019-08-21T10:32:53+07:00",
                     "description": "Movie Action",
-                    "created_at": "2019-07-05T09:47:05+07:00",
-                    "id": "bae04ac0-234a-431a-bed4-0bbc7026aa1c",
-                    "updated_at": "2019-07-05T09:47:05+07:00"
-                },
-                {
-                    "name": "Action",
-                    "description": "Movie Action",
-                    "created_at": "2019-07-05T09:49:11+07:00",
-                    "id": "8f245544-b4ac-468d-b291-7d10806b94d9",
-                    "updated_at": "2019-07-05T09:49:11+07:00"
+                    "id": "2f0a68a1-115d-4c24-9173-404638a1fc27",
+                    "name": "Action"
                 }
             ]
         }
         
-### Update Data by ID [POST /content/category/update/bae04ac0-234a-431a-bed4-0bbc7026aa1c]
+### Update Data by ID [POST /content/category/update/2f0a68a1-115d-4c24-9173-404638a1fc27]
 
 **Endpoint Path:** `POST /content/category/update/{id}`
 
@@ -157,11 +150,11 @@ END POINT API Database to DynamoDB
                 "message": "data has been updated"
             },
             "result": {
-                "id": "bae04ac0-234a-431a-bed4-0bbc7026aa1c"
+                "id": "2f0a68a1-115d-4c24-9173-404638a1fc27"
             }
         }
         
-### Delete Data by ID [POST /content/category/delete/bae04ac0-234a-431a-bed4-0bbc7026aa1c]
+### Delete Data by ID [POST /content/category/delete/2f0a68a1-115d-4c24-9173-404638a1fc27]
 
 **Endpoint Path:** `POST /content/category/delete/{id}`
 
@@ -171,6 +164,9 @@ END POINT API Database to DynamoDB
             "status": {
                 "code": "200",
                 "message": "data has been deleted"
+            },
+            "result": {
+                "id": "2f0a68a1-115d-4c24-9173-404638a1fc27"
             }
         }
 
