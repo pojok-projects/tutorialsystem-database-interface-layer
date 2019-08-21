@@ -43,6 +43,8 @@ class ContentMetadataVideoController extends Controller
     {
         $this->validate($request, [
             'metadata_id'   => 'required',
+            'file_name'     => 'required',
+            'file_path'     => 'required',
             'size'          => 'required',
             'format'        => 'required',
             'resolution'    => 'required',
@@ -50,6 +52,8 @@ class ContentMetadataVideoController extends Controller
         ]);
 
         $metadata_id    = $request->input('metadata_id'); 
+        $file_name      = $request->input('file_name');
+        $file_path      = $request->input('file_path');
         $size           = $request->input('size');
         $format         = $request->input('format');
         $resolution     = $request->input('resolution');
@@ -58,6 +62,8 @@ class ContentMetadataVideoController extends Controller
         $query                  = new ContentMetadataVideoModel();
         $query->id              = Str::uuid()->toString();
         $query->metadata_id     = $metadata_id;
+        $query->file_name       = $file_name;
+        $query->file_path       = $file_path;
         $query->size            = $size;
         $query->format          = $format;
         $query->resolution      = $resolution;
