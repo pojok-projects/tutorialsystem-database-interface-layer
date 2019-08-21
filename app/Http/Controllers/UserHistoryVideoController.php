@@ -84,8 +84,13 @@ class UserHistoryVideoController extends Controller
         // Parse Function From Trait DndbQuery
         $query_eloquent = $this->ReqParse($query);
 
+        // Improve Query Builder Search
+        $query = null;
+        foreach($query_eloquent as $key => $value) {
+            $query = $model->where($key, 'contains', $value);
+        }
+
         // Performe Query
-        $query = $model->where($query_eloquent);
         $count = $query->count();
 
         if($count == 0) {

@@ -86,7 +86,7 @@ class PlaylistCategoryController extends Controller
 
         $title = $request->input('title');
 
-        $query = $model->where('title', $title);
+        $query = $model->where('title', 'contains', $title);
         $count = $query->count();
 
         if($count == 0) {

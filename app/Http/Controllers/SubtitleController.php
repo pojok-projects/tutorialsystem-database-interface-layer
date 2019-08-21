@@ -75,7 +75,7 @@ class SubtitleController extends Controller
 
         $name = $request->input('name');
 
-        $query = $model->where('name', $name);
+        $query = $model->where('name', 'contains', $name);
         $count = $query->count();
 
         if($count == 0) {
