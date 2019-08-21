@@ -186,19 +186,19 @@ END POINT API Database to DynamoDB
             },
             "result": [
                 {
-                    "id": "81622337-8d48-4d5b-a41d-3f04d157385c",
-                    "user_id": "0490412d-b05c-41be-912a-4aa2e401e572",
-                    "video_description": "Tutorial of Programers",
-                    "category_id": "bae04ac0-234a-431a-bed4-0bbc7026aa1c",
-                    "video_title": "Pojok Programers",
-                    "created_at": "2019-07-05T12:58:16+07:00",
-                    "updated_at": "2019-07-05T12:58:16+07:00",
-                    "video_subtitle": "English, Indonesia",
+                    "category_id": "2f0a68a1-115d-4c24-9173-404638a1fc27",
+                    "video_viewers": null,
+                    "video_title": "Tutorial NodeJs - Bagian 1",
+                    "created_at": "2019-08-21T16:50:23+07:00",
+                    "privacy": "Public",
                     "video_genre": "Tutorial",
+                    "video_description": "Tutorial Dasar NodeJs",
+                    "updated_at": "2019-08-21T16:50:23+07:00",
                     "video_saves": null,
+                    "user_id": "91fa1120-17d4-442b-8338-aa3ab7bbc14e",
                     "video_share": null,
                     "video_downloads": null,
-                    "video_viewers": null
+                    "id": "f3c0fef5-6895-4a69-991b-efd01ec6e4a1"
                 }
             ]
         }
@@ -208,26 +208,28 @@ END POINT API Database to DynamoDB
 **Endpoint Path:** `POST /content/metadata/store`
 
 ### Requests
-| Parameter           | type   | Description                   |
-| ------------------- | ------ | ----------------------------- |
-| `user_id`           | string | Id of User                    |
-| `category_id`       | string | ID From Content Category      |
-| `video_title`       | string | Title of Video                |
-| `video_description` | string | Description of Video          |
-| `video_genre`       | string | Genre of Video                |
-| `video_viewers`     | int    | Viewers of Video (Optional)   |
-| `video_share`       | int    | Share of Video (Optional)     |
-| `video_saves`       | int    | Saves of Video (Optional)     |
-| `video_downloads`   | int    | Downloads of Video (Optional) |
+| Parameter           | type   | Status   | Description                       |
+| ------------------- | ------ | -------- | --------------------------------- |
+| `user_id`           | string | required | Id of User                        |
+| `category_id`       | string | required | ID From Content Category          |
+| `video_title`       | string | required | Title of Video                    |
+| `video_description` | string | required | Description of Video              |
+| `video_genre`       | string | required | Genre of Video                    |
+| `privacy`           | string | required | Privacy of Video (public/private) |
+| `video_viewers`     | int    | optional | Viewers of Video                  |
+| `video_share`       | int    | optional | Share of Video                    |
+| `video_saves`       | int    | optional | Saves of Video                    |
+| `video_downloads`   | int    | optional | Downloads of Video                |
 
 + Request (application/json)
 
         {
-            "user_id": "0490412d-b05c-41be-912a-4aa2e401e572",
-            "category_id": "bae04ac0-234a-431a-bed4-0bbc7026aa1c",
-            "video_title": "Pojok Programers",
-            "video_description": "Tutorial of Programers",
-            "video_genre": "Tutorial"
+            "user_id": "91fa1120-17d4-442b-8338-aa3ab7bbc14e",
+            "category_id": "2f0a68a1-115d-4c24-9173-404638a1fc27",
+            "video_title": "Tutorial NodeJs - Bagian 1",
+            "video_description": "Tutorial Dasar NodeJs",
+            "video_genre": "Tutorial",
+            "privacy": "Public"
         }
 
 + Response 200 (application/json)
@@ -238,30 +240,30 @@ END POINT API Database to DynamoDB
                 "message": "data has been saved"
             },
             "result": {
-                "id": "81622337-8d48-4d5b-a41d-3f04d157385c"
+                "id": "f3c0fef5-6895-4a69-991b-efd01ec6e4a1"
             }
         }
         
-### Get Data by ID [GET /content/metadata/81622337-8d48-4d5b-a41d-3f04d157385c]
+### Get Data by ID [GET /content/metadata/f3c0fef5-6895-4a69-991b-efd01ec6e4a1]
 
 **Endpoint Path:** `GET /content/metadata/{id}`
 
 + Response 200 (application/json)
 
         {
-            "id": "81622337-8d48-4d5b-a41d-3f04d157385c",
-            "user_id": "0490412d-b05c-41be-912a-4aa2e401e572",
-            "video_description": "Tutorial of Programers",
-            "category_id": "bae04ac0-234a-431a-bed4-0bbc7026aa1c",
-            "video_title": "Pojok Programers",
-            "created_at": "2019-07-05T12:58:16+07:00",
-            "updated_at": "2019-07-05T12:58:16+07:00",
-            "video_subtitle": "English, Indonesia",
+            "category_id": "2f0a68a1-115d-4c24-9173-404638a1fc27",
+            "video_viewers": null,
+            "video_title": "Tutorial NodeJs - Bagian 1",
+            "created_at": "2019-08-21T16:50:23+07:00",
+            "privacy": "Public",
             "video_genre": "Tutorial",
+            "video_description": "Tutorial Dasar NodeJs",
+            "updated_at": "2019-08-21T16:50:23+07:00",
             "video_saves": null,
+            "user_id": "91fa1120-17d4-442b-8338-aa3ab7bbc14e",
             "video_share": null,
             "video_downloads": null,
-            "video_viewers": null
+            "id": "f3c0fef5-6895-4a69-991b-efd01ec6e4a1"
         }
 
 ### Search Data [POST /content/metadata/search]
@@ -279,7 +281,7 @@ END POINT API Database to DynamoDB
 + Request (application/json)
 
         {
-            "query": "%22video_title%3DPojok+Programers%22"
+            "query": "%22video_title%3DTutorial+NodeJs%2Cvideo_description%3DTutorial%22"
         }
 
 + Response 200 (application/json)
@@ -292,33 +294,24 @@ END POINT API Database to DynamoDB
             },
             "result": [
                 {
-                    "video_duration": "600",
-                    "video_resolution": "360p, 480p, 720p, 1080p, 1080p HD",
-                    "video_users_likes": "80",
-                    "created_at": "2019-07-05T12:58:16+07:00",
-                    "video_format": "mp4",
-                    "video_share": "5",
-                    "video_dislikes": "2",
-                    "video_downloads": "11",
-                    "video_description": "Tutorial of Programers",
-                    "category_id": "bae04ac0-234a-431a-bed4-0bbc7026aa1c",
-                    "video_title": "Pojok Programers",
-                    "video_size": "104857600",
-                    "video_comments": "2",
-                    "updated_at": "2019-07-05T12:58:16+07:00",
-                    "name_uploader": "Juni Yadi",
-                    "video_likes": "100",
-                    "video_subtitle": "English, Indonesia",
+                    "category_id": "2f0a68a1-115d-4c24-9173-404638a1fc27",
+                    "video_viewers": null,
+                    "video_title": "Tutorial NodeJs - Bagian 1",
+                    "created_at": "2019-08-21T16:50:23+07:00",
+                    "privacy": "Public",
                     "video_genre": "Tutorial",
-                    "id": "81622337-8d48-4d5b-a41d-3f04d157385c",
-                    "video_users_dislikes": "2",
-                    "video_saves": "1",
-                    "video_viewers": "10"
+                    "video_description": "Tutorial Dasar NodeJs",
+                    "updated_at": "2019-08-21T16:50:23+07:00",
+                    "video_saves": null,
+                    "user_id": "91fa1120-17d4-442b-8338-aa3ab7bbc14e",
+                    "video_share": null,
+                    "video_downloads": null,
+                    "id": "f3c0fef5-6895-4a69-991b-efd01ec6e4a1"
                 }
             ]
         }
         
-### Update Data by ID [POST /content/metadata/update/81622337-8d48-4d5b-a41d-3f04d157385c]
+### Update Data by ID [POST /content/metadata/update/f3c0fef5-6895-4a69-991b-efd01ec6e4a1]
 
 **Endpoint Path:** `POST /content/metadata/update/{id}`
 
@@ -339,11 +332,11 @@ END POINT API Database to DynamoDB
                 "message": "data has been updated"
             },
             "result": {
-                "id": "81622337-8d48-4d5b-a41d-3f04d157385c"
+                "id": "f3c0fef5-6895-4a69-991b-efd01ec6e4a1"
             }
         }
         
-### Delete Data by ID [POST /content/metadata/delete/81622337-8d48-4d5b-a41d-3f04d157385c]
+### Delete Data by ID [POST /content/metadata/delete/f3c0fef5-6895-4a69-991b-efd01ec6e4a1]
 
 **Endpoint Path:** `POST /content/metadata/delete/{id}`
 
@@ -353,6 +346,9 @@ END POINT API Database to DynamoDB
             "status": {
                 "code": "200",
                 "message": "data has been deleted"
+            },
+            "result": {
+                "id": "f3c0fef5-6895-4a69-991b-efd01ec6e4a1"
             }
         }
 
