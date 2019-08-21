@@ -24,10 +24,27 @@ END POINT API Database to DynamoDB
 | `video_genre` | `Tutorial`         |
 
 ## Content Category [/content/category]
+Represents Category Videos. 
 
-### List All Data [GET]
+---
+**Requests Tables:**
+| Parameter     | type   | Status   | Description                     |
+| ------------- | ------ | -------- | ------------------------------- |
+| `name`        | string | required | name of content category        |
+| `description` | string | required | description of content category |
 
-**Endpoint Path:** `GET /content/category`
+---
+**Table Routes:**
+| URL                                      | Method | INFO                    |
+| ---------------------------------------- | ------ | ----------------------- |
+| `content/category`                       | GET    | Get All Data            |
+| `content/category/store`                 | POST   | Save Data               |
+| `content/category/{id}`                  | GET    | Get Data by ID          |
+| `content/category/search`                | POST   | Search Data Query       |
+| `content/category/update/{id}`           | POST   | Update Data by ID       |
+| `content/category/delete/{id}`           | POST   | Delete Data by ID       |
+
+### Get All Data [GET /content/category]
 
 + Response 200 (application/json)
 
@@ -48,15 +65,7 @@ END POINT API Database to DynamoDB
             ]
         }
 
-### Store Data [POST /content/category/store]
-
-**Endpoint Path:** `POST /content/category/store`
-
-### Requests
-| Parameter     | type   | Description                     |
-| ------------- | ------ | ------------------------------- |
-| `name`        | string | name of content category        |
-| `description` | string | description of content category |
+### Save Data [POST /content/category/store]
 
 + Request (application/json)
 
@@ -77,9 +86,10 @@ END POINT API Database to DynamoDB
             }
         }
         
-### Get Data by ID [GET /content/category/2f0a68a1-115d-4c24-9173-404638a1fc27]
+### Get Data by ID [GET /content/category/{id}]
 
-**Endpoint Path:** `GET /content/category/{id}`
++ Parameter
+    + id: `2f0a68a1-115d-4c24-9173-404638a1fc27` (string, required) - Id of Content Category
 
 + Response 200 (application/json)
 
@@ -91,14 +101,12 @@ END POINT API Database to DynamoDB
             "name": "Action"
         }
 
-### Search Data [POST /content/category/search]
+### Search Data Query [POST /content/category/search]
 
-**Endpoint Path:** `POST /content/category/search`
-
-### Requests
-| Parameter | type | Description |
-| -- | --- | -- |
-| `name` | string | name of content category |
+**Requests Tables:**
+| Parameter | type   | Status   | Description              |
+| --------- | ------ | -------- | ------------------------ |
+| `name`    | string | required | name of content category |
 
 + Request (application/json)
 
@@ -125,15 +133,10 @@ END POINT API Database to DynamoDB
             ]
         }
         
-### Update Data by ID [POST /content/category/update/2f0a68a1-115d-4c24-9173-404638a1fc27]
+### Update Data by ID [POST /content/category/update/{id}]
 
-**Endpoint Path:** `POST /content/category/update/{id}`
-
-### Requests
-| Parameter | type | Description |
-| -- | --- | -- |
-| `name` | string | name of content category |
-| `description` | string | description of content category |
++ Parameter
+    + id: `2f0a68a1-115d-4c24-9173-404638a1fc27` (string, required) - Id of Content Category
 
 + Request (application/json)
 
@@ -154,9 +157,10 @@ END POINT API Database to DynamoDB
             }
         }
         
-### Delete Data by ID [POST /content/category/delete/2f0a68a1-115d-4c24-9173-404638a1fc27]
+### Delete Data by ID [POST /content/category/delete/{id}]
 
-**Endpoint Path:** `POST /content/category/delete/{id}`
++ Parameter
+    + id: `2f0a68a1-115d-4c24-9173-404638a1fc27` (string, required) - Id of Content Category
 
 + Response 200 (application/json)
 
@@ -171,10 +175,36 @@ END POINT API Database to DynamoDB
         }
 
 ## Content Metadata [/content/metadata]
+Represents Metadata of Videos. 
 
-### List All Data [GET]
+---
+**Requests Tables:**
+| Parameter           | type   | Status   | Description                       |
+| ------------------- | ------ | -------- | --------------------------------- |
+| `user_id`           | string | required | Id of User                        |
+| `category_id`       | string | required | ID From Content Category          |
+| `video_title`       | string | required | Title of Video                    |
+| `video_description` | string | required | Description of Video              |
+| `video_genre`       | string | required | Genre of Video                    |
+| `privacy`           | string | required | Privacy of Video (public/private) |
+| `video_viewers`     | int    | optional | Viewers of Video                  |
+| `video_share`       | int    | optional | Share of Video                    |
+| `video_saves`       | int    | optional | Saves of Video                    |
+| `video_downloads`   | int    | optional | Downloads of Video                |
 
-**Endpoint Path:** `GET /content/metadata`
+---
+**Table Routes:**
+| URL                                      | Method | INFO                    |
+| ---------------------------------------- | ------ | ----------------------- |
+| `content/metadata`                       | GET    | Get All Data            |
+| `content/metadata/store`                 | POST   | Save Data               |
+| `content/metadata/{id}`                  | GET    | Get Data by ID          |
+| `content/metadata/search`                | POST   | Search Data Query       |
+| `content/metadata/update/{id}`           | POST   | Update Data by ID       |
+| `content/metadata/delete/{id}`           | POST   | Delete Data by ID       |
+
+
+### Get All Data [GET /content/metadata]
 
 + Response 200 (application/json)
 
@@ -203,23 +233,7 @@ END POINT API Database to DynamoDB
             ]
         }
 
-### Store Data [POST /content/metadata/store]
-
-**Endpoint Path:** `POST /content/metadata/store`
-
-### Requests
-| Parameter           | type   | Status   | Description                       |
-| ------------------- | ------ | -------- | --------------------------------- |
-| `user_id`           | string | required | Id of User                        |
-| `category_id`       | string | required | ID From Content Category          |
-| `video_title`       | string | required | Title of Video                    |
-| `video_description` | string | required | Description of Video              |
-| `video_genre`       | string | required | Genre of Video                    |
-| `privacy`           | string | required | Privacy of Video (public/private) |
-| `video_viewers`     | int    | optional | Viewers of Video                  |
-| `video_share`       | int    | optional | Share of Video                    |
-| `video_saves`       | int    | optional | Saves of Video                    |
-| `video_downloads`   | int    | optional | Downloads of Video                |
+### Save Data [POST /content/metadata/store]
 
 + Request (application/json)
 
@@ -244,9 +258,10 @@ END POINT API Database to DynamoDB
             }
         }
         
-### Get Data by ID [GET /content/metadata/f3c0fef5-6895-4a69-991b-efd01ec6e4a1]
+### Get Data by ID [GET /content/metadata/{id}]
 
-**Endpoint Path:** `GET /content/metadata/{id}`
++ Parameter
+    + id: `f3c0fef5-6895-4a69-991b-efd01ec6e4a1` (string, required) - Id of Content Metadata
 
 + Response 200 (application/json)
 
@@ -266,16 +281,14 @@ END POINT API Database to DynamoDB
             "id": "f3c0fef5-6895-4a69-991b-efd01ec6e4a1"
         }
 
-### Search Data [POST /content/metadata/search]
+### Search Data Query [POST /content/metadata/search]
 
-**Endpoint Path:** `POST /content/metadata/search`
-
-### Requests
+**Requests Tables:**
 | Parameter | type   | Description                                |
 | --------- | ------ | ------------------------------------------ |
 | `query`   | string | Based on Table Name and Using `URL Encode` |
 
-### Important
+**Important:**
 * Use `Search Query Builder`
 
 + Request (application/json)
@@ -311,12 +324,10 @@ END POINT API Database to DynamoDB
             ]
         }
         
-### Update Data by ID [POST /content/metadata/update/f3c0fef5-6895-4a69-991b-efd01ec6e4a1]
+### Update Data by ID [POST /content/metadata/update/{id}]
 
-**Endpoint Path:** `POST /content/metadata/update/{id}`
-
-### Requests
-* Table same as Store Function
++ Parameter
+    + id: `f3c0fef5-6895-4a69-991b-efd01ec6e4a1` (string, required) - Id of Content Metadata
 
 + Request (application/json)
 
@@ -336,9 +347,10 @@ END POINT API Database to DynamoDB
             }
         }
         
-### Delete Data by ID [POST /content/metadata/delete/f3c0fef5-6895-4a69-991b-efd01ec6e4a1]
+### Delete Data by ID [POST /content/metadata/delete/{id}]
 
-**Endpoint Path:** `POST /content/metadata/delete/{id}`
++ Parameter
+    + id: `f3c0fef5-6895-4a69-991b-efd01ec6e4a1` (string, required) - Id of Content Metadata
 
 + Response 200 (application/json)
 
@@ -355,7 +367,7 @@ END POINT API Database to DynamoDB
 
 ## Content Metadata Video [/content/metadata/video]
 
-### List All Data [GET]
+### Get All Data [GET]
 
 **Endpoint Path:** `GET /content/metadata/video`
 
@@ -381,7 +393,7 @@ END POINT API Database to DynamoDB
             ]
         }
 
-### Store Data [POST /content/metadata/video/store]
+### Save Data [POST /content/metadata/video/store]
 
 **Endpoint Path:** `POST /content/metadata/video/store`
 
@@ -433,7 +445,7 @@ END POINT API Database to DynamoDB
             "resolution": "1080p"
         }
 
-### Search Data [POST /content/metadata/video/search]
+### Search Data Query [POST /content/metadata/video/search]
 
 **Endpoint Path:** `POST /content/metadata/video/search`
 
@@ -514,7 +526,7 @@ END POINT API Database to DynamoDB
         
 ## Content Comment [/content/comment/metadata/83f75217-bcaf-415f-be53-8ca34a5b16be]
 
-### List All Data [GET]
+### Get All Data [GET]
 
 **Endpoint Path:** `/content/comment/metadata/{id}`
 
@@ -548,7 +560,7 @@ END POINT API Database to DynamoDB
             ]
         }
 
-### Store Data [POST /content/comment/store]
+### Save Data [POST /content/comment/store]
 
 **Endpoint Path:** `POST /content/comment/store`
 
@@ -642,7 +654,7 @@ END POINT API Database to DynamoDB
         
 ## Content Playlists Category [/content/playlists/category]
 
-### List All Data [GET]
+### Get All Data [GET]
 
 **Endpoint Path:** `GET content/playlists/category`
 
@@ -668,7 +680,7 @@ END POINT API Database to DynamoDB
         }
 
 
-### Store Data [POST /content/playlists/category/store]
+### Save Data [POST /content/playlists/category/store]
 
 **Endpoint Path:** `POST /content/playlists/category/store`
 
@@ -717,7 +729,7 @@ END POINT API Database to DynamoDB
             "status": "publik"
         }
 
-### Search Data [POST /content/playlists/category/search]
+### Search Data Query [POST /content/playlists/category/search]
 
 **Endpoint Path:** `POST /content/playlists/category/search`
 
@@ -798,7 +810,7 @@ END POINT API Database to DynamoDB
 
 ## Content Playlists [/content/playlists]
 
-### List All Data [GET]
+### Get All Data [GET]
 
 **Endpoint Path:** `GET content/playlists`
 
@@ -965,7 +977,7 @@ END POINT API Database to DynamoDB
 
 ## User [/user]
 
-### List All Data [GET]
+### Get All Data [GET]
 
 **Endpoint Path:** `GET /user`
 
@@ -998,7 +1010,7 @@ END POINT API Database to DynamoDB
             ]
         }
 
-### Store Data [POST /user/store]
+### Save Data [POST /user/store]
 
 **Endpoint Path:** `POST /user/store`
 
@@ -1071,7 +1083,7 @@ END POINT API Database to DynamoDB
             "website_link": "https://example.com"
         }
 
-### Search Data [POST /user/search]
+### Search Data Query [POST /user/search]
 
 **Endpoint Path:** `POST /user/search`
 
