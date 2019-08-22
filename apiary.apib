@@ -1006,6 +1006,159 @@ Represents Comment of Video.
             }
         }
 
+## Content Subtitle [/content/subtitle]
+Represents Subtitle Category of Videos. 
+
+---
+**Requests Tables:**
+| Parameter     | type   | Status   | Description                     |
+| ------------- | ------ | -------- | ------------------------------- |
+| `name`        | string | required | name of content subtitle        |
+| `description` | string | required | description of content subtitle |
+
+---
+**Table Routes:**
+| URL                                      | Method | INFO                    |
+| ---------------------------------------- | ------ | ----------------------- |
+| `content/subtitle`                       | GET    | Get All Data            |
+| `content/subtitle/store`                 | POST   | Save Data               |
+| `content/subtitle/{id}`                  | GET    | Get Data by ID          |
+| `content/subtitle/search`                | POST   | Search Data Query       |
+| `content/subtitle/update/{id}`           | POST   | Update Data by ID       |
+| `content/subtitle/delete/{id}`           | POST   | Delete Data by ID       |
+
+
+### Get All Data [GET /content/subtitle]
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "index list query has been performed, data has been found",
+                "total": 1
+            },
+            "result": [
+                {
+                    "updated_at": "2019-08-22T10:03:02+07:00",
+                    "created_at": "2019-08-22T10:03:02+07:00",
+                    "description": "Subtitle Indonesia",
+                    "id": "22a51a17-6cad-491f-a5fb-85826357721f",
+                    "name": "Indonesia"
+                }
+            ]
+        }
+
+### Save Data [POST /content/subtitle/store]
+
++ Request (application/json)
+
+        {
+            "name": "Indonesia",
+            "description": "Subtitle Indonesia"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been saved"
+            },
+            "result": {
+                "id": "22a51a17-6cad-491f-a5fb-85826357721f"
+            }
+        }
+        
+### Get Data by ID [GET /content/subtitle/{id}]
+
++ Parameter
+    + id: `22a51a17-6cad-491f-a5fb-85826357721f` (string, required) - Id of Content Subtitle
+
++ Response 200 (application/json)
+
+        {
+            "updated_at": "2019-08-22T10:03:02+07:00",
+            "created_at": "2019-08-22T10:03:02+07:00",
+            "description": "Subtitle Indonesia",
+            "id": "22a51a17-6cad-491f-a5fb-85826357721f",
+            "name": "Indonesia"
+        }
+
+### Search Data Query [POST /content/subtitle/search]
+
+**Requests Tables:**
+| Parameter | type   | Status   | Description              |
+| --------- | ------ | -------- | ------------------------ |
+| `name`    | string | required | name of content subtitle |
+
++ Request (application/json)
+
+        {
+            "name": "Indonesia"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "search query has been performed, data has been found",
+                "total": 1
+            },
+            "result": [
+                {
+                    "updated_at": "2019-08-22T10:03:02+07:00",
+                    "created_at": "2019-08-22T10:03:02+07:00",
+                    "description": "Subtitle Indonesia",
+                    "id": "22a51a17-6cad-491f-a5fb-85826357721f",
+                    "name": "Indonesia"
+                }
+            ]
+        }
+        
+### Update Data by ID [POST /content/subtitle/update/{id}]
+
++ Parameter
+    + id: `22a51a17-6cad-491f-a5fb-85826357721f` (string, required) - Id of Content Subtitle
+
++ Request (application/json)
+
+        {
+            "description": "List all subtitle indonesia"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been updated"
+            },
+            "result": {
+                "id": "22a51a17-6cad-491f-a5fb-85826357721f"
+            }
+        }
+        
+### Delete Data by ID [POST /content/metadata/delete/{id}]
+
++ Parameter
+    + id: `22a51a17-6cad-491f-a5fb-85826357721f` (string, required) - Id of Content Metadata
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been deleted"
+            },
+            "result": {
+                "id": "22a51a17-6cad-491f-a5fb-85826357721f"
+            }
+        }
+
+
+
 
 ## User [/user]
 
@@ -1202,3 +1355,4 @@ Represents Comment of Video.
                 "id": "91fa1120-17d4-442b-8338-aa3ab7bbc14e"
             }
         }
+
