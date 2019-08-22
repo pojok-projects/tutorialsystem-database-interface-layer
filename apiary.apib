@@ -710,171 +710,7 @@ Represents Metadata Subtitle.
             }
         }
 
-## Content Playlists [/content/playlists]
 
-### Get All Data [GET]
-
-**Endpoint Path:** `GET content/playlists`
-
-+ Response 200 (application/json)
-
-        {
-            "status": {
-                "code": "200",
-                "message": "index list query has been performed, data has been found",
-                "total": 1
-            },
-            "result": [
-                {
-                    "updated_at": "2019-07-16T18:21:42+07:00",
-                    "user_id": 123,
-                    "metadata_id": "83f75217-bcaf-415f-be53-8ca34a5b16be",
-                    "created_at": "2019-07-16T18:21:42+07:00",
-                    "id": "908244fb-3298-48ac-9d80-ce454782125f",
-                    "playlistcategory_id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
-                    "last_watch": 60,
-                    "order_list": 1
-                }
-            ]
-        }
-
-
-### Save Data [POST /content/playlists/store]
-
-**Endpoint Path:** `/content/playlists/store`
-
-### Requests
-| Parameter                         | type     | Description                                                               |
-| ---------------------------------------- | --------- | ---------------------------------------------------------------------------------- |
-| `user_id`                         | string | User ID                                                                       |
-| `playlistcategory_id` | string | ID From content playlists category                 |
-| `metadata_id`                 | string | ID From content metadata                                     |
-| `order_list`                   | int       | (Optional) Order Playlist                                   |
-| `last_watch`                   | int       | (Optional) Remember Last Watch `in second` |
-
-+ Request (application/json)
-
-        {
-            "user_id": 123,
-            "playlistcategory_id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
-            "metadata_id": "83f75217-bcaf-415f-be53-8ca34a5b16be",
-            "order_list": 1,
-            "last_watch": 60
-        }
-
-+ Response 200 (application/json)
-
-        {
-            "status": {
-                "code": "200",
-                "message": "data has been saved"
-            },
-            "result": {
-                "id": "908244fb-3298-48ac-9d80-ce454782125f"
-            }
-        }
-  
-
-
-### Get Data by ID [GET /content/playlists/908244fb-3298-48ac-9d80-ce454782125f]
-
-**Endpoint Path:** `GET /content/playlists/{id}`
-
-### Important
-* `next` and `previous` will work, only if `order_list` has been set
-* return null if `next` and `previous` data not found
-
-### Response
-| Parameter  | type  | Description       |
-| ---------- | ----- | ----------------- |
-| `playlist` | array | Playlist Now      |
-| `next`     | array | Playlist Next     |
-| `previous` | array | Playlist Previous |
-
-+ Response 200 (application/json)
-
-        {
-            "status": {
-                "code": "200",
-                "message": "data has been saved"
-            },
-            "result": {
-                "playlist": {
-                    "updated_at": "2019-07-16T18:36:24+07:00",
-                    "user_id": 123,
-                    "metadata_id": "83f75217-bcaf-415f-be53-8ca34a5b16be",
-                    "created_at": "2019-07-16T18:36:24+07:00",
-                    "id": "a371fd4b-f829-4c3f-84e7-f67ba94b9763",
-                    "playlistcategory_id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
-                    "last_watch": 60,
-                    "order_list": 2
-                },
-                "next": {
-                    "updated_at": "2019-07-16T18:36:30+07:00",
-                    "user_id": 123,
-                    "metadata_id": "83f75217-bcaf-415f-be53-8ca34a5b16be",
-                    "created_at": "2019-07-16T18:36:30+07:00",
-                    "id": "972070df-16fb-4c47-93c8-7690de1ac5fc",
-                    "playlistcategory_id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
-                    "last_watch": 60,
-                    "order_list": 3
-                },
-                "previous": {
-                    "updated_at": "2019-07-16T19:05:33+07:00",
-                    "user_id": 123,
-                    "metadata_id": "83f75217-bcaf-415f-be53-8ca34a5b16be",
-                    "created_at": "2019-07-16T19:05:33+07:00",
-                    "id": "80e7a905-4ea0-4184-a40f-814394fe653a",
-                    "playlistcategory_id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
-                    "last_watch": 60,
-                    "order_list": 1
-                }
-            }
-        }
-
-### Update Data by ID [POST /content/playlists/update/908244fb-3298-48ac-9d80-ce454782125f]
-
-**Endpoint Path:** `POST /content/playlists/update/{id}`
-
-### Requests
-| Parameter | type | Description |
-| -- | --- | -- |
-| `user_id` | string | User ID |
-| `playlistcategory_id` | string | ID From content playlists category |
-| `metadata_id` | string | ID From content metadata |
-| `order_list` | int | (Optional) Order Playlist |
-| `last_watch` | int | (Optional) Remember Last Watch `in second` |
-
-+ Request (application/json)
-
-        {
-            "last_watch": 120
-        }
-
-+ Response 200 (application/json)
-
-        {
-            "status": {
-                "code": "200",
-                "message": "data has been updated"
-            },
-            "result": {
-                "id": "908244fb-3298-48ac-9d80-ce454782125f"
-            }
-        }
- 
-### Delete Data by ID [POST /content/playlists/delete/908244fb-3298-48ac-9d80-ce454782125f]
-
-**Endpoint Path:** `POST /content/playlists/delete/{id}`
-
-+ Response 200 (application/json)
-
-        {
-            "status": {
-                "code": "200",
-                "message": "data has been deleted"
-            }
-        }
 
 ## Content Subtitle [/content/subtitle]
 Represents Subtitle Category of Videos. 
@@ -1624,7 +1460,174 @@ Represents Comment of Video.
                 "id": "5ea23f47-94ab-4a38-88e4-a008bb2df23a"
             }
         }   
-        
+
+## Content Playlists [/content/playlists]
+Represents Playlists of Videos. 
+
+---
+**Requests Tables:**
+| Parameter             | type   | Status   | Description                        |
+| --------------------- | ------ | -------- | ---------------------------------- |
+| `user_id`             | string | required | User ID                            |
+| `playlistcategory_id` | string | required | ID From content playlists category |
+| `metadata_id`         | string | required | ID From content metadata           |
+| `order_list`          | int    | Optional | Order Playlist                     |
+| `last_watch`          | int    | Optional | Remember Last Watch `in second`    |
+
+---
+**Table Routes:**
+| URL                                      | Method | INFO                    |
+| ---------------------------------------- | ------ | ----------------------- |
+| `content/playlists`                      | GET    | Get All Data            |
+| `content/playlists/store`                | POST   | Save Data               |
+| `content/playlists/{id}`                 | GET    | Get Data by ID          |
+| `content/playlists/search`               | POST   | Search Data Query       |
+| `content/playlists/update/{id}`          | POST   | Update Data by ID       |
+| `content/playlists/delete/{id}`          | POST   | Delete Data by ID       |
+
+### Get All Data [GET /content/playlists]
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "index list query has been performed, data has been found",
+                "total": 1
+            },
+            "result": [
+                {
+                    "updated_at": "2019-07-16T18:21:42+07:00",
+                    "user_id": 123,
+                    "metadata_id": "83f75217-bcaf-415f-be53-8ca34a5b16be",
+                    "created_at": "2019-07-16T18:21:42+07:00",
+                    "id": "908244fb-3298-48ac-9d80-ce454782125f",
+                    "playlistcategory_id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
+                    "last_watch": 60,
+                    "order_list": 1
+                }
+            ]
+        }
+
+
+### Save Data [POST /content/playlists/store]
+
++ Request (application/json)
+
+        {
+            "user_id": 123,
+            "playlistcategory_id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
+            "metadata_id": "83f75217-bcaf-415f-be53-8ca34a5b16be",
+            "order_list": 1,
+            "last_watch": 60
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been saved"
+            },
+            "result": {
+                "id": "908244fb-3298-48ac-9d80-ce454782125f"
+            }
+        }
+  
+### Get Data by ID [GET /content/playlists/{id}]
+
+**Important:**
+* `next` and `previous` will work, only if `order_list` has been set
+* return null if `next` and `previous` data not found
+
+**Response:**
+| Parameter  | type  | Description       |
+| ---------- | ----- | ----------------- |
+| `playlist` | array | Playlist Now      |
+| `next`     | array | Playlist Next     |
+| `previous` | array | Playlist Previous |
+
++ Parameter
+    + id: `908244fb-3298-48ac-9d80-ce454782125f` (string, required) - Id of Content Playlist
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been saved"
+            },
+            "result": {
+                "playlist": {
+                    "updated_at": "2019-07-16T18:36:24+07:00",
+                    "user_id": 123,
+                    "metadata_id": "83f75217-bcaf-415f-be53-8ca34a5b16be",
+                    "created_at": "2019-07-16T18:36:24+07:00",
+                    "id": "a371fd4b-f829-4c3f-84e7-f67ba94b9763",
+                    "playlistcategory_id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
+                    "last_watch": 60,
+                    "order_list": 2
+                },
+                "next": {
+                    "updated_at": "2019-07-16T18:36:30+07:00",
+                    "user_id": 123,
+                    "metadata_id": "83f75217-bcaf-415f-be53-8ca34a5b16be",
+                    "created_at": "2019-07-16T18:36:30+07:00",
+                    "id": "972070df-16fb-4c47-93c8-7690de1ac5fc",
+                    "playlistcategory_id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
+                    "last_watch": 60,
+                    "order_list": 3
+                },
+                "previous": {
+                    "updated_at": "2019-07-16T19:05:33+07:00",
+                    "user_id": 123,
+                    "metadata_id": "83f75217-bcaf-415f-be53-8ca34a5b16be",
+                    "created_at": "2019-07-16T19:05:33+07:00",
+                    "id": "80e7a905-4ea0-4184-a40f-814394fe653a",
+                    "playlistcategory_id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
+                    "last_watch": 60,
+                    "order_list": 1
+                }
+            }
+        }
+
+### Update Data by ID [POST /content/playlists/update/{id}]
+
++ Parameter
+    + id: `908244fb-3298-48ac-9d80-ce454782125f` (string, required) - Id of Content Playlist
+
++ Request (application/json)
+
+        {
+            "last_watch": 120
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been updated"
+            },
+            "result": {
+                "id": "908244fb-3298-48ac-9d80-ce454782125f"
+            }
+        }
+ 
+### Delete Data by ID [POST /content/playlists/delete/{id}]
+
++ Parameter
+    + id: `908244fb-3298-48ac-9d80-ce454782125f` (string, required) - Id of Content Playlist
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been deleted"
+            }
+        }
+
 
 ## User [/user]
 
