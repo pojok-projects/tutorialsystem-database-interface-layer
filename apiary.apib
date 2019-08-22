@@ -1470,6 +1470,160 @@ Represents Dislike of Videos.
             }
         }
 
+## Content Like [/content/like]
+Represents Like of Videos. 
+
+---
+**Requests Tables:**
+| Parameter     | type   | Status   | Description              |
+| ------------- | ------ | -------- | ------------------------ |
+| `user_id`     | string | required | User ID                  |
+| `metadata_id` | string | required | Id From Content Metadata |
+
+---
+**Table Routes:**
+| URL                                      | Method | INFO                    |
+| ---------------------------------------- | ------ | ----------------------- |
+| `content/like`                           | GET    | Get All Data            |
+| `content/like/store`                     | POST   | Save Data               |
+| `content/like/{id}`                      | GET    | Get Data by ID          |
+| `content/like/search`                    | POST   | Search Data Query       |
+| `content/like/update/{id}`               | POST   | Update Data by ID       |
+| `content/like/delete/{id}`               | POST   | Delete Data by ID       |
+
+
+### Get All Data [GET /content/like]
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "index list query has been performed, data has been found",
+                "total": 1
+            },
+            "result": [
+                {
+                    "updated_at": "2019-08-22T10:50:09+07:00",
+                    "user_id": "91fa1120-17d4-442b-8338-aa3ab7bbc14e",
+                    "created_at": "2019-08-22T10:50:09+07:00",
+                    "id": "1ac56bd5-3fcd-4272-aceb-72a217d95e2b",
+                    "metadata_id": "f3c0fef5-6895-4a69-991b-efd01ec6e4a1"
+                }
+            ]
+        }
+
+### Save Data [POST /content/like/store]
+
++ Request (application/json)
+
+        {
+            "user_id": "91fa1120-17d4-442b-8338-aa3ab7bbc14e",
+            "metadata_id": "f3c0fef5-6895-4a69-991b-efd01ec6e4a1"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been saved"
+            },
+            "result": {
+                "id": "1ac56bd5-3fcd-4272-aceb-72a217d95e2b"
+            }
+        }
+        
+### Get Data by ID [GET /content/like/{id}]
+
++ Parameter
+    + id: `1ac56bd5-3fcd-4272-aceb-72a217d95e2b` (string, required) - Id of Content Subtitle
+
++ Response 200 (application/json)
+
+        {
+            "updated_at": "2019-08-22T10:50:09+07:00",
+            "user_id": "91fa1120-17d4-442b-8338-aa3ab7bbc14e",
+            "created_at": "2019-08-22T10:50:09+07:00",
+            "id": "1ac56bd5-3fcd-4272-aceb-72a217d95e2b",
+            "metadata_id": "f3c0fef5-6895-4a69-991b-efd01ec6e4a1"
+        }
+
+### Search Data Query [POST /content/like/search]
+
+**Requests Tables:**
+| Parameter | type   | Description                                |
+| --------- | ------ | ------------------------------------------ |
+| `query`   | string | Based on Table Name and Using `URL Encode` |
+
+**Important:**
+* Use `Search Query Builder`
+
++ Request (application/json)
+
+        {
+            "query": "%22user_id%3D91fa1120-17d4-442b-8338-aa3ab7bbc14e%22"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "search query has been performed, data has been found",
+                "total": 1
+            },
+            "result": [
+                {
+                    "updated_at": "2019-08-22T10:50:09+07:00",
+                    "user_id": "91fa1120-17d4-442b-8338-aa3ab7bbc14e",
+                    "created_at": "2019-08-22T10:50:09+07:00",
+                    "id": "1ac56bd5-3fcd-4272-aceb-72a217d95e2b",
+                    "metadata_id": "f3c0fef5-6895-4a69-991b-efd01ec6e4a1"
+                }
+            ]
+        }
+        
+### Update Data by ID [POST /content/like/update/{id}]
+
++ Parameter
+    + id: `1ac56bd5-3fcd-4272-aceb-72a217d95e2b` (string, required) - Id of Content Subtitle
+
++ Request (application/json)
+
+        {
+            "metadata_id": "2e8d08b0-a52a-443b-8df6-818316d072de"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been updated"
+            },
+            "result": {
+                "id": "1ac56bd5-3fcd-4272-aceb-72a217d95e2b"
+            }
+        }
+        
+### Delete Data by ID [POST /content/metadata/delete/{id}]
+
++ Parameter
+    + id: `1ac56bd5-3fcd-4272-aceb-72a217d95e2b` (string, required) - Id of Content Metadata
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been deleted"
+            },
+            "result": {
+                "id": "1ac56bd5-3fcd-4272-aceb-72a217d95e2b"
+            }
+        }
+
 
 ## User [/user]
 
