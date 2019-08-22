@@ -1632,10 +1632,36 @@ Represents Like of Videos.
 
 
 ## User [/user]
+Represents User Details. 
 
-### Get All Data [GET]
+---
+**Requests Tables:**
+| Parameter       | type   | Status   | Description                     |
+| --------------- | ------ | -------- | ------------------------------- |
+| `name`          | string | required | name of user                    |
+| `email`         | string | required | email of user                   |
+| `first_name`    | string | required | first name of user              |
+| `last_name`     | string | required | last name of user               |
+| `birth_date`    | string | required | birth date of user              |
+| `gender`        | string | required | gender of user (male/female)    |
+| `photo_profile` | string | optional | path of photo profile from user |
+| `about`         | string | optional | about of user                   |
+| `website_link`  | string | optional | website link of user            |
+| `facebook_link` | string | optional | facebook link of user           |
+| `twitter_link`  | string | optional | twitter link of user            |
+| `linkedin_link` | string | optional | linkedin link of user           |
+---
+**Table Routes:**
+| URL                                      | Method | INFO                    |
+| ---------------------------------------- | ------ | ----------------------- |
+| `user`                                   | GET    | Get All Data            |
+| `user/store`                             | POST   | Save Data               |
+| `user/{id}`                              | GET    | Get Data by ID          |
+| `user/search`                            | POST   | Search Data Query       |
+| `user/update/{id}`                       | POST   | Update Data by ID       |
+| `user/delete/{id}`                       | POST   | Delete Data by ID       |
 
-**Endpoint Path:** `GET /user`
+### Get All Data [GET /user]
 
 + Response 200 (application/json)
 
@@ -1668,24 +1694,6 @@ Represents Like of Videos.
 
 ### Save Data [POST /user/store]
 
-**Endpoint Path:** `POST /user/store`
-
-### Requests
-| Parameter       | type   | Status   | Description                     |
-| --------------- | ------ | -------- | ------------------------------- |
-| `name`          | string | required | name of user                    |
-| `email`         | string | required | email of user                   |
-| `first_name`    | string | required | first name of user              |
-| `last_name`     | string | required | last name of user               |
-| `birth_date`    | string | required | birth date of user              |
-| `gender`        | string | required | gender of user (male/female)    |
-| `photo_profile` | string | optional | path of photo profile from user |
-| `about`         | string | optional | about of user                   |
-| `website_link`  | string | optional | website link of user            |
-| `facebook_link` | string | optional | facebook link of user           |
-| `twitter_link`  | string | optional | twitter link of user            |
-| `linkedin_link` | string | optional | linkedin link of user           |
-
 + Request (application/json)
 
         {
@@ -1715,9 +1723,10 @@ Represents Like of Videos.
             }
         }
         
-### Get Data by ID [GET /user/91fa1120-17d4-442b-8338-aa3ab7bbc14e]
+### Get Data by ID [GET /user/{id}]
 
-**Endpoint Path:** `GET /user/{id}`
++ Parameter
+    + id: `91fa1120-17d4-442b-8338-aa3ab7bbc14e` (string, required) - Id of User
 
 + Response 200 (application/json)
 
@@ -1741,14 +1750,12 @@ Represents Like of Videos.
 
 ### Search Data Query [POST /user/search]
 
-**Endpoint Path:** `POST /user/search`
-
-### Requests
+**Requests Tables:**
 | Parameter | type   | Description                                |
 | --------- | ------ | ------------------------------------------ |
 | `query`   | string | Based on Table Name and Using `URL Encode` |
 
-### Important
+**Important:**
 * Use `Search Query Builder`
 
 + Request (application/json)
@@ -1786,12 +1793,10 @@ Represents Like of Videos.
             ]
         }
         
-### Update Data by ID [POST /user/update/91fa1120-17d4-442b-8338-aa3ab7bbc14e]
+### Update Data by ID [POST /user/update/{id}]
 
-**Endpoint Path:** `POST /user/update/{id}`
-
-### Requests
-* Table same as Store Function
++ Parameter
+    + id: `91fa1120-17d4-442b-8338-aa3ab7bbc14e` (string, required) - Id of User
 
 + Request (application/json)
 
@@ -1811,9 +1816,10 @@ Represents Like of Videos.
             }
         }
         
-### Delete Data by ID [POST /user/delete/91fa1120-17d4-442b-8338-aa3ab7bbc14e]
+### Delete Data by ID [POST /user/delete/{id}]
 
-**Endpoint Path:** `POST /user/delete/{id}`
++ Parameter
+    + id: `91fa1120-17d4-442b-8338-aa3ab7bbc14e` (string, required) - Id of User
 
 + Response 200 (application/json)
 
