@@ -554,162 +554,6 @@ Represents Metadata Subtitle.
             }
         }
 
-## Content Playlists Category [/content/playlists/category]
-
-### Get All Data [GET]
-
-**Endpoint Path:** `GET content/playlists/category`
-
-+ Response 200 (application/json)
-
-        {
-            "status": {
-                "code": "200",
-                "message": "index list query has been performed, data has been found",
-                "total": 1
-            },
-            "result": [
-                {
-                    "updated_at": "2019-07-16T17:26:37+07:00",
-                    "user_id": 123,
-                    "description": "Step By Step Membuat Node JS",
-                    "created_at": "2019-07-16T17:26:37+07:00",
-                    "id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
-                    "title": "Tutorial Node JS Untuk Pemula",
-                    "status": "publik"
-                }
-            ]
-        }
-
-
-### Save Data [POST /content/playlists/category/store]
-
-**Endpoint Path:** `POST /content/playlists/category/store`
-
-### Requests
-| Parameter         | type     | Description                                                             |
-| ------------------------ | --------- | -------------------------------------------------------------------------------- |
-| `user_id`         | string | User ID                                                                     |
-| `title`             | string | title of content playlists category             |
-| `description` | string | description of content playlists category |
-| `status`           | string | `publik|user|pribadi`                                         |
-
-+ Request (application/json)
-
-        {
-            "user_id": 123,
-            "title": "Tutorial Node JS Untuk Pemula",
-            "description": "Step By Step Membuat Node JS",
-            "status": "publik"
-        }
-
-+ Response 200 (application/json)
-
-        {
-            "status": {
-                "code": "200",
-                "message": "data has been saved"
-            },
-            "result": {
-                "id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e"
-            }
-        }
-        
-### Get Data by ID [GET /content/playlists/category/a02d33c3-e82e-4df7-be1f-c01a943ad55e]
-
-**Endpoint Path:** `GET /content/playlists/category/{id}`
-
-+ Response 200 (application/json)
-
-        {
-            "updated_at": "2019-07-16T17:26:37+07:00",
-            "user_id": 123,
-            "description": "Step By Step Membuat Node JS",
-            "created_at": "2019-07-16T17:26:37+07:00",
-            "id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
-            "title": "Tutorial Node JS Untuk Pemula",
-            "status": "publik"
-        }
-
-### Search Data Query [POST /content/playlists/category/search]
-
-**Endpoint Path:** `POST /content/playlists/category/search`
-
-### Requests
-| Parameter | type   | Description                         |
-| --------- | ------ | ----------------------------------- |
-| `title`   | string | title of content playlists category |
-
-+ Request (application/json)
-
-        {
-            "title": "Tutorial Node JS Untuk Pemula"
-        }
-
-+ Response 200 (application/json)
-
-        {
-            "status": {
-                "code": "200",
-                "message": "search query has been performed, data has been found",
-                "total": 1
-            },
-            "result": [
-                {
-                    "updated_at": "2019-07-16T17:26:37+07:00",
-                    "user_id": 123,
-                    "description": "Step By Step Membuat Node JS",
-                    "created_at": "2019-07-16T17:26:37+07:00",
-                    "id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
-                    "title": "Tutorial Node JS Untuk Pemula",
-                    "status": "publik"
-                }
-            ]
-        }
-        
-### Update Data by ID [POST /content/playlists/category/update/a02d33c3-e82e-4df7-be1f-c01a943ad55e]
-
-**Endpoint Path:** `POST /content/playlists/category/update/{id}`
-
-### Requests
-| Parameter | type | Description |
-| -- | --- | -- |
-| `user_id` | string | User ID |
-| `title` | string | title of content playlists category |
-| `description` | string | description of content playlists category |
-| `status` | string | `publik|user|pribadi` |
-
-+ Request (application/json)
-
-        {
-            "title": "Tutorial Node JS"
-        }
-
-+ Response 200 (application/json)
-
-        {
-            "status": {
-                "code": "200",
-                "message": "data has been updated"
-            },
-            "result": {
-                "id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e"
-            }
-        }
-        
-### Delete Data by ID [POST /content/playlists/category/delete/a02d33c3-e82e-4df7-be1f-c01a943ad55e]
-
-**Endpoint Path:** `POST /content/playlists/category/delete/{id}`
-
-+ Response 200 (application/json)
-
-        {
-            "status": {
-                "code": "200",
-                "message": "data has been deleted"
-            }
-        }
-
 
 
 ## Content Subtitle [/content/subtitle]
@@ -1627,6 +1471,164 @@ Represents Playlists of Videos.
                 "message": "data has been deleted"
             }
         }
+
+## Content Playlists Category [/content/playlists/category]
+Represents Like of Videos. 
+
+---
+**Requests Tables:**
+| Parameter     | type   | Status   | Description                               |
+| ------------- | ------ | -------- | ----------------------------------------- |
+| `user_id`     | string | required | User ID                                   |
+| `title`       | string | required | title of content playlists category       |
+| `description` | string | required | description of content playlists category |
+| `status`      | string | required | `publik|user|pribadi`                     |
+---
+**Table Routes:**
+| URL                                      | Method | INFO                    |
+| ---------------------------------------- | ------ | ----------------------- |
+| `content/playlists/category`             | GET    | Get All Data            |
+| `content/playlists/category/store`       | POST   | Save Data               |
+| `content/playlists/category/{id}`        | GET    | Get Data by ID          |
+| `content/playlists/category/search`      | POST   | Search Data Query       |
+| `content/playlists/category/update/{id}` | POST   | Update Data by ID       |
+| `content/playlists/category/delete/{id}` | POST   | Delete Data by ID       |
+
+### Get All Data [GET /content/playlists/category]
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "index list query has been performed, data has been found",
+                "total": 1
+            },
+            "result": [
+                {
+                    "updated_at": "2019-07-16T17:26:37+07:00",
+                    "user_id": 123,
+                    "description": "Step By Step Membuat Node JS",
+                    "created_at": "2019-07-16T17:26:37+07:00",
+                    "id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
+                    "title": "Tutorial Node JS Untuk Pemula",
+                    "status": "publik"
+                }
+            ]
+        }
+
+
+### Save Data [POST /content/playlists/category/store]
+
++ Request (application/json)
+
+        {
+            "user_id": 123,
+            "title": "Tutorial Node JS Untuk Pemula",
+            "description": "Step By Step Membuat Node JS",
+            "status": "publik"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been saved"
+            },
+            "result": {
+                "id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e"
+            }
+        }
+        
+### Get Data by ID [GET /content/playlists/category/{id}]
+
++ Parameter
+    + id: `a02d33c3-e82e-4df7-be1f-c01a943ad55e` (string, required) - Id of Content Playlist Category
+
++ Response 200 (application/json)
+
+        {
+            "updated_at": "2019-07-16T17:26:37+07:00",
+            "user_id": 123,
+            "description": "Step By Step Membuat Node JS",
+            "created_at": "2019-07-16T17:26:37+07:00",
+            "id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
+            "title": "Tutorial Node JS Untuk Pemula",
+            "status": "publik"
+        }
+
+### Search Data Query [POST /content/playlists/category/search]
+
+**Requests:**
+| Parameter | type   | Description                         |
+| --------- | ------ | ----------------------------------- |
+| `title`   | string | title of content playlists category |
+
++ Request (application/json)
+
+        {
+            "title": "Tutorial Node JS Untuk Pemula"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "search query has been performed, data has been found",
+                "total": 1
+            },
+            "result": [
+                {
+                    "updated_at": "2019-07-16T17:26:37+07:00",
+                    "user_id": 123,
+                    "description": "Step By Step Membuat Node JS",
+                    "created_at": "2019-07-16T17:26:37+07:00",
+                    "id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e",
+                    "title": "Tutorial Node JS Untuk Pemula",
+                    "status": "publik"
+                }
+            ]
+        }
+        
+### Update Data by ID [POST /content/playlists/category/update/{id}]
+
++ Parameter
+    + id: `a02d33c3-e82e-4df7-be1f-c01a943ad55e` (string, required) - Id of Content Playlist Category
+
++ Request (application/json)
+
+        {
+            "title": "Tutorial Node JS"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been updated"
+            },
+            "result": {
+                "id": "a02d33c3-e82e-4df7-be1f-c01a943ad55e"
+            }
+        }
+        
+### Delete Data by ID [POST /content/playlists/category/delete/{id}]
+
++ Parameter
+    + id: `a02d33c3-e82e-4df7-be1f-c01a943ad55e` (string, required) - Id of Content Playlist Category
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been deleted"
+            }
+        }
+
 
 
 ## User [/user]
