@@ -448,6 +448,7 @@ Represents Metadata of Videos.
 
 + Parameter
     + id: `cb6efeda-319d-4dc7-bdb9-993286bcf709` (string, required) - Id of Content Metadata Video
+
 + Response 200 (application/json)
 
         {
@@ -544,11 +545,34 @@ Represents Metadata of Videos.
             }
         }
         
-## Content Comment [/content/comment/metadata/83f75217-bcaf-415f-be53-8ca34a5b16be]
+## Content Comment [/content/comment/]
 
-### Get All Data [GET]
+Represents Comment of Video. 
 
-**Endpoint Path:** `/content/comment/metadata/{id}`
+---
+**Requests Tables:**
+| Parameter     | type   | Description                                               |
+| ------------- | ------ | --------------------------------------------------------- |
+| `metadata_id` | string | Metadata ID from Content Metadata                         |
+| `user_id`     | string | User ID                                                   |
+| `reply_id`    | string | ID From Comment, if they reply another comment (Optional) |
+| `message`     | string | Reply Message                                             |
+
+---
+**Table Routes:**
+| URL                                      | Method | INFO                    |
+| ---------------------------------------- | ------ | ----------------------- |
+| `content/category`                       | GET    | Get All Data            |
+| `content/category/store`                 | POST   | Save Data               |
+| `content/category/{id}`                  | GET    | Get Data by ID          |
+| `content/category/search`                | POST   | Search Data Query       |
+| `content/category/update/{id}`           | POST   | Update Data by ID       |
+| `content/category/delete/{id}`           | POST   | Delete Data by ID       |
+
+### Get All Data [GET /content/comment/metadata/{id}]
+
++ Parameter
+    + id: `f3c0fef5-6895-4a69-991b-efd01ec6e4a1` (string, required) - Id of Content Metadata
 
 + Response 200 (application/json)
 
@@ -582,16 +606,6 @@ Represents Metadata of Videos.
 
 ### Save Data [POST /content/comment/store]
 
-**Endpoint Path:** `POST /content/comment/store`
-
-### Requests
-| Parameter     | type   | Description                                               |
-| ------------- | ------ | --------------------------------------------------------- |
-| `metadata_id` | string | Metadata ID from Content Metadata                         |
-| `user_id`     | string | User ID                                                   |
-| `reply_id`    | string | ID From Comment, if they reply another comment (Optional) |
-| `message`     | string | Reply Message                                             |
-
 + Request (application/json)
 
         {
@@ -613,9 +627,10 @@ Represents Metadata of Videos.
             }
         }
 
-### Get Comment by ID [GET /content/comment/83f75217-bcaf-415f-be53-8ca34a5b16be]
+### Get Comment by ID [GET /content/comment/{id}]
 
-**Endpoint Path:** `GET /content/comment/{id}`
++ Parameter
+    + id: `5ea23f47-94ab-4a38-88e4-a008bb2df23a` (string, required) - Id of Content Comment
 
 + Response 200 (application/json)
 
@@ -629,17 +644,10 @@ Represents Metadata of Videos.
             "message": "this just reply test"
         }
 
-### Update Data by ID [POST /content/comment/update/b14571d3-ccc4-4d0a-977f-4ce6fdfc6b1d]
+### Update Data by ID [POST /content/comment/update/{id}]
 
-**Endpoint Path:** `POST /content/comment/update/{id}`
-
-### Requests
-| Parameter     | type   | Description                                               |
-| ------------- | ------ | --------------------------------------------------------- |
-| `metadata_id` | string | Metadata ID from Content Metadata                         |
-| `user_id`     | string | User ID                                                   |
-| `reply_id`    | string | ID From Comment, if they reply another comment (Optional) |
-| `message`     | string | Reply Message                                             |
++ Parameter
+    + id: `5ea23f47-94ab-4a38-88e4-a008bb2df23a` (string, required) - Id of Content Comment
 
 + Request (application/json)
 
@@ -655,13 +663,14 @@ Represents Metadata of Videos.
                 "message": "data has been updated"
             },
             "result": {
-                "id": "b14571d3-ccc4-4d0a-977f-4ce6fdfc6b1d"
+                "id": "5ea23f47-94ab-4a38-88e4-a008bb2df23a"
             }
         }
         
-### Delete Data by ID [POST /content/metadata/delete/b14571d3-ccc4-4d0a-977f-4ce6fdfc6b1d]
+### Delete Data by ID [POST /content/metadata/delete/{id}]
 
-**Endpoint Path:** `POST /content/comment/delete/{id}`
++ Parameter
+    + id: `5ea23f47-94ab-4a38-88e4-a008bb2df23a` (string, required) - Id of Content Comment
 
 + Response 200 (application/json)
 
@@ -669,8 +678,11 @@ Represents Metadata of Videos.
             "status": {
                 "code": "200",
                 "message": "data has been deleted"
+            },
+            "result": {
+                "id": "5ea23f47-94ab-4a38-88e4-a008bb2df23a"
             }
-        }        
+        }   
         
 ## Content Playlists Category [/content/playlists/category]
 
