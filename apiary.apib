@@ -23,156 +23,6 @@ END POINT API Database to DynamoDB
 | `video_title` | `Pojok Programers` |
 | `video_genre` | `Tutorial`         |
 
-## Content Category [/content/category]
-Represents Category Videos. 
-
----
-**Requests Tables:**
-| Parameter     | type   | Status   | Description                     |
-| ------------- | ------ | -------- | ------------------------------- |
-| `name`        | string | required | name of content category        |
-| `description` | string | required | description of content category |
-
----
-**Table Routes:**
-| URL                                      | Method | INFO                    |
-| ---------------------------------------- | ------ | ----------------------- |
-| `content/category`                       | GET    | Get All Data            |
-| `content/category/store`                 | POST   | Save Data               |
-| `content/category/{id}`                  | GET    | Get Data by ID          |
-| `content/category/search`                | POST   | Search Data Query       |
-| `content/category/update/{id}`           | POST   | Update Data by ID       |
-| `content/category/delete/{id}`           | POST   | Delete Data by ID       |
-
-### Get All Data [GET /content/category]
-
-+ Response 200 (application/json)
-
-        {
-            "status": {
-                "code": "200",
-                "message": "index list query has been performed, data has been found",
-                "total": 1
-            },
-            "result": [
-                {
-                    "updated_at": "2019-08-21T10:32:53+07:00",
-                    "created_at": "2019-08-21T10:32:53+07:00",
-                    "description": "Movie Action",
-                    "id": "2f0a68a1-115d-4c24-9173-404638a1fc27",
-                    "name": "Action"
-                }
-            ]
-        }
-
-### Save Data [POST /content/category/store]
-
-+ Request (application/json)
-
-        {
-           "name": "Action",
-           "description": "Movie Action"
-        }
-
-+ Response 200 (application/json)
-
-        {
-            "status": {
-                "code": "200",
-                "message": "data has been saved"
-            },
-            "result": {
-                "id": "2f0a68a1-115d-4c24-9173-404638a1fc27"
-            }
-        }
-        
-### Get Data by ID [GET /content/category/{id}]
-
-+ Parameter
-    + id: `2f0a68a1-115d-4c24-9173-404638a1fc27` (string, required) - Id of Content Category
-
-+ Response 200 (application/json)
-
-        {
-            "updated_at": "2019-08-21T10:32:53+07:00",
-            "created_at": "2019-08-21T10:32:53+07:00",
-            "description": "Movie Action",
-            "id": "2f0a68a1-115d-4c24-9173-404638a1fc27",
-            "name": "Action"
-        }
-
-### Search Data Query [POST /content/category/search]
-
-**Requests Tables:**
-| Parameter | type   | Status   | Description              |
-| --------- | ------ | -------- | ------------------------ |
-| `name`    | string | required | name of content category |
-
-+ Request (application/json)
-
-        {
-            "name": "Action"
-        }
-
-+ Response 200 (application/json)
-
-        {
-            "status": {
-                "code": "200",
-                "message": "search query has been performed, data has been found",
-                "total": 1
-            },
-            "result": [
-                {
-                    "updated_at": "2019-08-21T10:32:53+07:00",
-                    "created_at": "2019-08-21T10:32:53+07:00",
-                    "description": "Movie Action",
-                    "id": "2f0a68a1-115d-4c24-9173-404638a1fc27",
-                    "name": "Action"
-                }
-            ]
-        }
-        
-### Update Data by ID [POST /content/category/update/{id}]
-
-+ Parameter
-    + id: `2f0a68a1-115d-4c24-9173-404638a1fc27` (string, required) - Id of Content Category
-
-+ Request (application/json)
-
-        {
-           "name": "Action 2",
-           "description": "Movie Action 2"
-        }
-
-+ Response 200 (application/json)
-
-        {
-            "status": {
-                "code": "200",
-                "message": "data has been updated"
-            },
-            "result": {
-                "id": "2f0a68a1-115d-4c24-9173-404638a1fc27"
-            }
-        }
-        
-### Delete Data by ID [POST /content/category/delete/{id}]
-
-+ Parameter
-    + id: `2f0a68a1-115d-4c24-9173-404638a1fc27` (string, required) - Id of Content Category
-
-+ Response 200 (application/json)
-
-        {
-            "status": {
-                "code": "200",
-                "message": "data has been deleted"
-            },
-            "result": {
-                "id": "2f0a68a1-115d-4c24-9173-404638a1fc27"
-            }
-        }
 
 ## Content Metadata [/content/metadata]
 Represents Metadata of Videos. 
@@ -1623,6 +1473,158 @@ Represents Like of Videos.
                 "id": "1ac56bd5-3fcd-4272-aceb-72a217d95e2b"
             }
         }
+
+## Content Category [/content/category]
+Represents Category Videos. 
+
+---
+**Requests Tables:**
+| Parameter     | type   | Status   | Description                     |
+| ------------- | ------ | -------- | ------------------------------- |
+| `name`        | string | required | name of content category        |
+| `description` | string | required | description of content category |
+
+---
+**Table Routes:**
+| URL                                      | Method | INFO                    |
+| ---------------------------------------- | ------ | ----------------------- |
+| `content/category`                       | GET    | Get All Data            |
+| `content/category/store`                 | POST   | Save Data               |
+| `content/category/{id}`                  | GET    | Get Data by ID          |
+| `content/category/search`                | POST   | Search Data Query       |
+| `content/category/update/{id}`           | POST   | Update Data by ID       |
+| `content/category/delete/{id}`           | POST   | Delete Data by ID       |
+
+### Get All Data [GET /content/category]
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "index list query has been performed, data has been found",
+                "total": 1
+            },
+            "result": [
+                {
+                    "updated_at": "2019-08-21T10:32:53+07:00",
+                    "created_at": "2019-08-21T10:32:53+07:00",
+                    "description": "Movie Action",
+                    "id": "2f0a68a1-115d-4c24-9173-404638a1fc27",
+                    "name": "Action"
+                }
+            ]
+        }
+
+### Save Data [POST /content/category/store]
+
++ Request (application/json)
+
+        {
+           "name": "Action",
+           "description": "Movie Action"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been saved"
+            },
+            "result": {
+                "id": "2f0a68a1-115d-4c24-9173-404638a1fc27"
+            }
+        }
+        
+### Get Data by ID [GET /content/category/{id}]
+
++ Parameter
+    + id: `2f0a68a1-115d-4c24-9173-404638a1fc27` (string, required) - Id of Content Category
+
++ Response 200 (application/json)
+
+        {
+            "updated_at": "2019-08-21T10:32:53+07:00",
+            "created_at": "2019-08-21T10:32:53+07:00",
+            "description": "Movie Action",
+            "id": "2f0a68a1-115d-4c24-9173-404638a1fc27",
+            "name": "Action"
+        }
+
+### Search Data Query [POST /content/category/search]
+
+**Requests Tables:**
+| Parameter | type   | Status   | Description              |
+| --------- | ------ | -------- | ------------------------ |
+| `name`    | string | required | name of content category |
+
++ Request (application/json)
+
+        {
+            "name": "Action"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "search query has been performed, data has been found",
+                "total": 1
+            },
+            "result": [
+                {
+                    "updated_at": "2019-08-21T10:32:53+07:00",
+                    "created_at": "2019-08-21T10:32:53+07:00",
+                    "description": "Movie Action",
+                    "id": "2f0a68a1-115d-4c24-9173-404638a1fc27",
+                    "name": "Action"
+                }
+            ]
+        }
+        
+### Update Data by ID [POST /content/category/update/{id}]
+
++ Parameter
+    + id: `2f0a68a1-115d-4c24-9173-404638a1fc27` (string, required) - Id of Content Category
+
++ Request (application/json)
+
+        {
+           "name": "Action 2",
+           "description": "Movie Action 2"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been updated"
+            },
+            "result": {
+                "id": "2f0a68a1-115d-4c24-9173-404638a1fc27"
+            }
+        }
+        
+### Delete Data by ID [POST /content/category/delete/{id}]
+
++ Parameter
+    + id: `2f0a68a1-115d-4c24-9173-404638a1fc27` (string, required) - Id of Content Category
+
++ Response 200 (application/json)
+
+        {
+            "status": {
+                "code": "200",
+                "message": "data has been deleted"
+            },
+            "result": {
+                "id": "2f0a68a1-115d-4c24-9173-404638a1fc27"
+            }
+        }
+
 
 
 ## User [/user]
