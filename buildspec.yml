@@ -6,21 +6,13 @@ phases:
       php: 7.3
   build:
     commands:
+      - set -ex
       - printenv
       - ls -R
-      - set -ex
       - CURRENTDIR=`pwd`
-      - WORKDIR=${CURRENTDIR}/php-bin
-      - PHPDIR=${CURRENTDIR}/php
-      - mkdir -p ${WORKDIR}
-      - aws s3 cp s3://php-layer-706415835325-ap-southeast-1-s3/php_layer_713.zip ${WORKDIR}
-      - cd ${WORKDIR}
-      - unzip php_layer_713.zip
-      - ls -l
-      - cd -z
-      - cd ${PHPDIR}
-      - curl -sS https://getcomposer.org/installer | ${WORKDIR}/bin/php
-      - ${WORKDIR}/bin/php -c${CURRENTDIR}/php.ini composer.phar install --no-dev --no-progress
+      - curl -sS https://getcomposer.org/installer | php
+      - php -c${CURRENTDIR}/php.ini composer.phar install --no-dev --no-progress
+
 artifacts:
   files:
     - '**/*'
