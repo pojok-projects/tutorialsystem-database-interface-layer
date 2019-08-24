@@ -26,43 +26,7 @@ Resources:
                 Version: '2012-10-17'
                 Statement:
                     - Effect: Allow
-                      Action:
-                          - logs:CreateLogGroup
-                          - logs:CreateLogStream
-                          - logs:PutLogEvents
-                      Resource: arn:aws:logs:*:*:*
-                    - Effect: Allow
-                      Action:
-                          - ec2:CreateNetworkInterface
-                          - ec2:DescribeNetworkInterfaces
-                          - ec2:DescribeNetworkInterface
-                          - ec2:DeleteNetworkInterface
-                          - ec2:DescribeVpcEndpoints
-                      Resource: '*'
-                    - Effect: Allow
-                      Action:
-                          - xray:PutTraceSegments
-                          - xray:PutTelemetryRecords
-                          - xray:GetSamplingRules
-                          - xray:GetSamplingTargets
-                          - xray:GetSamplingStatisticSummaries
-                      Resource: '*'
-                    - Effect: Allow
-                      Action:
-                          - kms:GenerateDataKey
-                          - kms:Decrypt
-                      Resource: '*'
-                    - Effect: Allow
-                      Action:
-                          - dynamodb:DescribeStream
-                          - dynamodb:GetRecords
-                          - dynamodb:GetShardIterator
-                          - dynamodb:GetItem
-                          - dynamodb:ListStreams
-                          - dynamodb:Query
-                          - dynamodb:Scan
-                          - dynamodb:DescribeTable
-                          - dynamodb:PutItem
+                      Action: '*'
                       Resource: '*'
 
     rDbilLambdaExecutionRole:
