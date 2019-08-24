@@ -19,6 +19,13 @@ class UserModel extends DynamoDbModel
         'facebook_link',
         'twitter_link',
         'linkedin_link',
+        'following',
+        'follower',
+        'like_video',
+        'dislike_video',
+        'saved_video',
+        'history_video',
+        'playlists',
     ];
 
     protected $table = 'User';
