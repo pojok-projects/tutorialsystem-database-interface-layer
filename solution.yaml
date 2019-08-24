@@ -44,6 +44,18 @@ Resources:
                           - kms:GenerateDataKey
                           - kms:Decrypt
                       Resource: '*'
+                    - Effect: Allow
+                      Action:
+                          - dynamodb:DescribeStream
+                          - dynamodb:GetRecords
+                          - dynamodb:GetShardIterator
+                          - dynamodb:GetItem
+                          - dynamodb:ListStreams
+                          - dynamodb:Query
+                          - dynamodb:Scan
+                          - dynamodb:DescribeTable
+                          - dynamodb:PutItem
+                      Resource: '*'
 
     rDbilLambdaExecutionRole:
         Type: AWS::IAM::Role
@@ -80,6 +92,7 @@ Resources:
                 Variables:
                     MONITORING_ALERT: disabled
                     VPC_VALIDATION: disabled
+                    LOG_CHANNEL: stderr
 
     rApiGatewayRole:
         Type: AWS::IAM::Role
