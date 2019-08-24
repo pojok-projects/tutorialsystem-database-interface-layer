@@ -357,7 +357,7 @@ Resources:
                   MatchEquals: refs/heads/{Branch}
             TargetPipeline: !Ref rCodePipelineStack
             TargetAction: source
-            TargetPipelineVersion: !GetAtt CodePipeline.Version
+            TargetPipelineVersion: !GetAtt rCodePipelineStack.Version
 
     rCodeBuildCICD:
         Type: AWS::CodeBuild::Project
