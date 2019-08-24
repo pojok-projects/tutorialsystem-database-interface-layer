@@ -48,13 +48,6 @@ class UserController extends Controller
             'last_name'         => 'required',
             'birth_date'        => 'required',
             'gender'            => 'required',
-            'following'         => 'required',
-            'follower'          => 'required',
-            'like_video'        => 'required',
-            'dislike_video'     => 'required',
-            'saved_video'       => 'required',
-            'history_video'     => 'required',
-            'playlists'         => 'required',
         ]);
 
         $name           = $request->input('name');
@@ -68,6 +61,7 @@ class UserController extends Controller
         $website_link   = $request->input('website_link') ?? null;
         $facebook_link  = $request->input('facebook_link') ?? null;
         $twitter_link   = $request->input('twitter_link') ?? null;
+        $linkedin_link  = $request->input('linkedin_link') ?? null;
         $following      = $request->input('following') ?? null;
         $follower       = $request->input('follower') ?? null;
         $like_video     = $request->input('like_video') ?? null;
