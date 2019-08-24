@@ -5,22 +5,10 @@
  */
 $table_name = [
     'ContentCategory',
-    'ContentComment',
-    'ContentDislike',
-    'ContentLike',
     'ContentMetadata',
-    'ContentMetadataSubtitle',
-    'ContentMetadataVideo',
     'ContentSubtitle',
     'PlaylistCategory',
-    'Playlists',
     'User',
-    'UserFollowing',
-    'UserFollower',
-    'UserLikeVideo',
-    'UserDislikeVideo',
-    'UserSavedVideo',
-    'UserHistoryVideo'
 ];
 
 /**
