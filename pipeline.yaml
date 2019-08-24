@@ -373,7 +373,7 @@ Resources:
             Environment:
                 Type: linuxContainer
                 ComputeType: BUILD_GENERAL1_SMALL
-                Image: aws/codebuild/python:2.7.12
+                Image: aws/codebuild/standard:2.0
                 EnvironmentVariables:
                     - Name: S3Bucket
                       Value: !Ref rArtifactStoreBucket
@@ -389,9 +389,8 @@ Resources:
                     version: 0.2
                     phases:
                       install:
-                        commands:
-                          - printenv
-                          - ls -R
+                        runtime-versions:
+                          php: 7.3
                       pre_build:
                         commands:
                           - DATE=`date +"%Y%m%d%H%M%S"`
