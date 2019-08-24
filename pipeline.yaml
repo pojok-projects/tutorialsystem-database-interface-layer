@@ -320,15 +320,6 @@ Resources:
                         InputArtifacts:
                             - Name: BuildCICDOutput
                         RunOrder: 1
-                      - Name: approval-changeset
-                        ActionTypeId:
-                            Category: Approval
-                            Owner: AWS
-                            Version: 1
-                            Provider: Manual
-                        Configuration:
-                            CustomData: Please review changeset then apporove solution deployment to the AWS account.
-                        RunOrder: 2
                       - Name: deploy-changeset
                         RoleArn: !GetAtt [rCloudFormationRole, Arn]
                         ActionTypeId:
@@ -343,7 +334,7 @@ Resources:
                             StackName: !Sub ${pSolutionNaming}-provisioning-cf
                         InputArtifacts:
                             - Name: BuildCICDOutput
-                        RunOrder: 3
+                        RunOrder: 2
 
     rGithubWebhook:
         Type: AWS::CodePipeline::Webhook

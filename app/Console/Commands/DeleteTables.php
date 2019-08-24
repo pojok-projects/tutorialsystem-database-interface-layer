@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Console\Commands;
 
 use BaoPham\DynamoDb\DynamoDbClientService;
@@ -14,7 +15,7 @@ class DeleteTables extends Command
     {
         $dynamodb = $dynamoService->getClient();
 
-        $schema = (require __DIR__ . '/../../../database/dynamodb/tables.php');
+        $schema = (require __DIR__ . '/../../database/dynamodb/tables.php');
 
         foreach ($schema as $tableSchema) {
             try {
@@ -23,7 +24,7 @@ class DeleteTables extends Command
                 // safely ignore
             }
         }
-        
+
         echo "Deleted tables";
     }
 }
