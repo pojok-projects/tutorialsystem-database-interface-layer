@@ -60,6 +60,11 @@ class ContentMetadataController extends Controller
         $video_saves            = $request->input('video_saves') ?? null;
         $video_downloads        = $request->input('video_downloads') ?? null;
         $privacy                = $request->input('privacy');
+        $metavideos             = $request->input('metavideos') ?? null;
+        $subtitle               = $request->input('subtitle') ?? null;
+        $comments               = $request->input('comments') ?? null;
+        $likes                  = $request->input('likes') ?? null;
+        $dislikes               = $request->input('dislikes') ?? null;
 
         $query                          = new ContentMetadataModel();
         $query->id                      = Str::uuid()->toString();
@@ -73,6 +78,11 @@ class ContentMetadataController extends Controller
         $query->video_saves             = $video_saves;
         $query->video_downloads         = $video_downloads;
         $query->privacy                 = $privacy;
+        $query->metavideos              = $metavideos;
+        $query->subtitle                = $subtitle;
+        $query->comments                = $comments;
+        $query->likes                   = $likes;
+        $query->dislikes                = $dislikes;
         $query->save();
 
         return response()->json([
