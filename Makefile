@@ -10,7 +10,7 @@ endif
 branch=`git rev-parse --abbrev-ref HEAD`
 
 # Parameters
-SolutionNamingBase=tutorial-system-database-interface-layer
+SolutionNamingBase=tutorial-system-dbil
 SolutionNaming=${SolutionNamingBase}-${branch}
 
 Locale=cicd
