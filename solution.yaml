@@ -8,6 +8,14 @@ Parameters:
     pSolutionNaming:
         Type: String
 
+    pDynamoDBKey:
+        Type: 'AWS::SSM::Parameter::Value<String>'
+        Default: DYNAMODB_KEY
+
+    pDynamoDBSecret:
+        Type: 'AWS::SSM::Parameter::Value<String>'
+        Default: DYNAMODB_SECRET
+
 Resources:
     rCommonPolicyForLambdas:
         Type: AWS::IAM::ManagedPolicy
@@ -90,9 +98,10 @@ Resources:
                 - arn:aws:lambda:ap-southeast-1:887080169480:layer:php73:3
             Environment:
                 Variables:
-                    MONITORING_ALERT: disabled
-                    VPC_VALIDATION: disabled
                     LOG_CHANNEL: stderr
+                    DYNAMODB_REGION: ap-southeast-1
+                    DYNAMODB_KEY: !Sub ${pDynamoDBKey}
+                    DYNAMODB_SECRET: !Sub ${pDynamoDBSecret}
 
     rApiGatewayRole:
         Type: AWS::IAM::Role
