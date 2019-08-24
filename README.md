@@ -22,7 +22,7 @@ See Red highlight below for the scope of this repository.
 ## API DB Diagram
 - [x] [Sprint 1](https://dbdiagram.io/d/5d28c8f8ced98361d6dc9bab)
 - [x] [Sprint 2](https://dbdiagram.io/d/5d2edb4fced98361d6dcbc9f)
-- [ ] [Spirnt 2 (Refactoring)][https://dbdiagram.io/d/5d60b65bced98361d6dddf7b] [We Are Here Now]
+- [ ] [Spirnt 2 (Refactoring)](https://dbdiagram.io/d/5d60b65bced98361d6dddf7b) [We Are Here Now]
 
 ## Table Structure API End Points
 
