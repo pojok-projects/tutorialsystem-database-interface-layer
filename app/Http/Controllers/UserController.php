@@ -48,6 +48,13 @@ class UserController extends Controller
             'last_name'         => 'required',
             'birth_date'        => 'required',
             'gender'            => 'required',
+            'following'         => 'required',
+            'follower'          => 'required',
+            'like_video'        => 'required',
+            'dislike_video'     => 'required',
+            'saved_video'       => 'required',
+            'history_video'     => 'required',
+            'playlists'         => 'required',
         ]);
 
         $name           = $request->input('name');
@@ -61,7 +68,13 @@ class UserController extends Controller
         $website_link   = $request->input('website_link') ?? null;
         $facebook_link  = $request->input('facebook_link') ?? null;
         $twitter_link   = $request->input('twitter_link') ?? null;
-        $linkedin_link  = $request->input('linkedin_link') ?? null;
+        $following      = $request->input('following') ?? null;
+        $follower       = $request->input('follower') ?? null;
+        $like_video     = $request->input('like_video') ?? null;
+        $dislike_video  = $request->input('dislike_video') ?? null;
+        $saved_video    = $request->input('saved_video') ?? null;
+        $history_video  = $request->input('history_video') ?? null;
+        $playlists      = $request->input('playlists') ?? null;
 
 
         $query                  = new UserModel();
@@ -78,6 +91,13 @@ class UserController extends Controller
         $query->facebook_link   = $facebook_link; 
         $query->twitter_link    = $twitter_link; 
         $query->linkedin_link   = $linkedin_link; 
+        $query->following       = $following; 
+        $query->follower        = $follower; 
+        $query->like_video      = $like_video; 
+        $query->dislike_video   = $dislike_video; 
+        $query->saved_video     = $saved_video; 
+        $query->history_video   = $history_video; 
+        $query->playlists       = $playlists; 
         $query->save();
 
         return response()->json([
