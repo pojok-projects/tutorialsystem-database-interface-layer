@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Console\Commands;
 
 use BaoPham\DynamoDb\DynamoDbClientService;
@@ -15,7 +14,7 @@ class CreateTables extends Command
     {
         $dynamodb = $dynamoService->getClient();
 
-        $schema = (require __DIR__ . '/../../database/dynamodb/tables.php');
+        $schema = (require __DIR__ . '/../../../database/dynamodb/tables.php');
 
         foreach ($schema as $tableSchema) {
             $table = $dynamodb->createTable($tableSchema);

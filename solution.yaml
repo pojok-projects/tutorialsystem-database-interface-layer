@@ -69,8 +69,7 @@ Resources:
             Description: Database Interface Layer - Lambda
             Runtime: provided
             Role: !Sub ${rDbilLambdaExecutionRole.Arn}
-            Code: public
-            Handler: index.php
+            Handler: public/index.php
             MemorySize: 512
             Timeout: 30
             TracingConfig:
