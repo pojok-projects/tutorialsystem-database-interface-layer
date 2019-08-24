@@ -5,31 +5,31 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-use App\Models\ContentCategoryModel;
+use App\Models\ContentSubtitleModel;
 
-class ContentCategoryController extends Controller
+class SubtitleController extends Controller
 {
     /**
-     * @param ContentCategoryModel $model
+     * @param ContentSubtitleModel $model
      * @param Request $request
      */
-    public function index(ContentCategoryModel $model, Request $request)
+    public function index(ContentSubtitleModel $model, Request $request)
     {
         $count = $model->count();
 
         if($count == 0) {
-            $message = ', no data found with this query';
-            $result = [];
+            $message    = ', no data found with this query';
+            $result     = [];
         } else {
-            $message = ', data has been found';
-            $result = $model->all();
+            $message    = ', data has been found';
+            $result     = $model->all();
         }
 
         return response()->json([
             'status' => [
-                'code' => '200',
-                'message' => 'index list query has been performed'. $message,
-                'total' => $count,
+                'code'      => '200',
+                'message'   => 'index list query has been performed'. $message,
+                'total'     => $count,
             ],
             'result' => $result,
         ], 200);
@@ -38,14 +38,14 @@ class ContentCategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'description' => 'required'
+            'name'          => 'required',
+            'description'   => 'required'
         ]);
 
         $name           = $request->input('name');
         $description    = $request->input('description');
 
-        $query              = new ContentCategoryModel();
+        $query              = new ContentSubtitleModel();
         $query->id          = Str::uuid()->toString();
         $query->name        = $name;
         $query->description = $description;
@@ -53,8 +53,8 @@ class ContentCategoryController extends Controller
 
         return response()->json([
             'status' => [
-                'code' => '200',
-                'message' => 'data has been saved',
+                'code'      => '200',
+                'message'   => 'data has been saved',
             ],
             'result' => [
                 'id' => $query->id,
@@ -62,12 +62,12 @@ class ContentCategoryController extends Controller
         ], 200);
     }
 
-    public function show(ContentCategoryModel $model, string $id)
+    public function show(ContentSubtitleModel $model, string $id)
     {
         return $model->findOrFail($id);
     }
 
-    public function search(ContentCategoryModel $model, Request $request)
+    public function search(ContentSubtitleModel $model, Request $request)
     {
         $this->validate($request, [
             'name' => 'required',
@@ -79,32 +79,32 @@ class ContentCategoryController extends Controller
         $count = $query->count();
 
         if($count == 0) {
-            $message = ', no data found with this query';
-            $result = [];
+            $message    = ', no data found with this query';
+            $result     = [];
         } else {
-            $message = ', data has been found';
-            $result = $query->get();
+            $message    = ', data has been found';
+            $result     = $query->get();
         }
 
         return response()->json([
             'status' => [
-                'code' => '200',
-                'message' => 'search query has been performed'. $message,
-                'total' => $count,
+                'code'      => '200',
+                'message'   => 'search query has been performed'. $message,
+                'total'     => $count,
             ],
             'result' => $result,
         ], 200);
     }
 
-    public function update(ContentCategoryModel $model, Request $request, string $id)
+    public function update(ContentSubtitleModel $model, Request $request, string $id)
     {
         $query = $model->findOrFail($id);
         $query->update($request->all());
 
         return response()->json([
             'status' => [
-                'code' => '200',
-                'message' => 'data has been updated',
+                'code'      => '200',
+                'message'   => 'data has been updated',
             ],
             'result' => [
                 'id' => $query->id,
@@ -112,18 +112,16 @@ class ContentCategoryController extends Controller
         ], 200);
     }
 
-    public function delete(ContentCategoryModel $model, string $id)
+    public function delete(ContentSubtitleModel $model, string $id)
     {
         $query = $model->findOrFail($id);
         $query->delete();
 
         return response()->json([
             'status' => [
-                'code' => '200',
-                'message' => 'data has been deleted',
+                'code'      => '200',
+                'message'   => 'data has been deleted',
             ],
         ], 200);
     }
 }
-
-?>

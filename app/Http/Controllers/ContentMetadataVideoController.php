@@ -5,15 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-use App\Models\PlaylistCategoryModel;
+use App\Models\ContentMetadataVideoModel;
+use App\Traits\DndbQuery;
 
-class PlaylistCategoryController extends Controller
+class ContentMetadataVideoController extends Controller
 {
+    // Include Trait inside Controller
+    use DndbQuery;
+
     /**
-     * @param PlaylistCategoryModel $model
+     * @param ContentMetadataVideoModel $model
      * @param Request $request
      */
-    public function index(PlaylistCategoryModel $model, Request $request)
+    public function index(ContentMetadataVideoModel $model, Request $request)
     {
         $count = $model->count();
 
@@ -38,23 +42,32 @@ class PlaylistCategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'user_id'       => 'required',
-            'title'         => 'required',
-            'description'   => 'required',
-            'status'        => 'required',
+            'metadata_id'   => 'required',
+            'file_name'     => 'required',
+            'file_path'     => 'required',
+            'size'          => 'required',
+            'format'        => 'required',
+            'resolution'    => 'required',
+            'duration'      => 'required',
         ]);
 
-        $user_id        = $request->input('user_id');
-        $title          = $request->input('title');
-        $description    = $request->input('description');
-        $status         = $request->input('status');     
+        $metadata_id    = $request->input('metadata_id'); 
+        $file_name      = $request->input('file_name');
+        $file_path      = $request->input('file_path');
+        $size           = $request->input('size');
+        $format         = $request->input('format');
+        $resolution     = $request->input('resolution');
+        $duration       = $request->input('duration');
 
-        $query              = new PlaylistCategoryModel();
-        $query->id          = Str::uuid()->toString();
-        $query->user_id     = $user_id;
-        $query->title       = $title;
-        $query->description = $description;
-        $query->status      = $status;
+        $query                  = new ContentMetadataVideoModel();
+        $query->id              = Str::uuid()->toString();
+        $query->metadata_id     = $metadata_id;
+        $query->file_name       = $file_name;
+        $query->file_path       = $file_path;
+        $query->size            = $size;
+        $query->format          = $format;
+        $query->resolution      = $resolution;
+        $query->duration        = $duration;
         $query->save();
 
         return response()->json([
@@ -68,7 +81,7 @@ class PlaylistCategoryController extends Controller
         ], 200);
     }
 
-    public function show(PlaylistCategoryModel $model, string $id)
+    public function show(ContentMetadataVideoModel $model, string $id)
     {
         return $model->findOrFail($id);
     }
@@ -78,15 +91,24 @@ class PlaylistCategoryController extends Controller
      * Example : 
      * query="video_title=Sponsbob"
      */
-    public function search(PlaylistCategoryModel $model, Request $request)
+    public function search(ContentMetadataVideoModel $model, Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
+            'query' => 'required',
         ]);
 
-        $title = $request->input('title');
+        $query = $request->input('query');
 
-        $query = $model->where('title', 'contains', $title);
+        // Parse Function From Trait DndbQuery
+        $query_eloquent = $this->ReqParse($query);
+
+        // Improve Query Builder Search
+        $query = null;
+        foreach($query_eloquent as $key => $value) {
+            $query = $model->where($key, 'contains', $value);
+        }
+
+        // Performe Query
         $count = $query->count();
 
         if($count == 0) {
@@ -107,7 +129,7 @@ class PlaylistCategoryController extends Controller
         ], 200);
     }
 
-    public function update(PlaylistCategoryModel $model, Request $request, string $id)
+    public function update(ContentMetadataVideoModel $model, Request $request, string $id)
     {
         $query = $model->findOrFail($id);
         $query->update($request->all());
@@ -123,7 +145,7 @@ class PlaylistCategoryController extends Controller
         ], 200);
     }
 
-    public function delete(PlaylistCategoryModel $model, string $id)
+    public function delete(ContentMetadataVideoModel $model, string $id)
     {
         $query = $model->findOrFail($id);
         $query->delete();
@@ -136,5 +158,3 @@ class PlaylistCategoryController extends Controller
         ], 200);
     }
 }
-
-?>

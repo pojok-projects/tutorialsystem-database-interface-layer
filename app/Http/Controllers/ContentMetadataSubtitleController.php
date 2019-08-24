@@ -5,15 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-use App\Models\PlaylistCategoryModel;
+use App\Models\ContentMetadataSubtitleModel;
+use App\Traits\DndbQuery;
 
-class PlaylistCategoryController extends Controller
+class ContentMetadataSubtitleController extends Controller
 {
+    // Include Trait inside Controller
+    use DndbQuery;
+
     /**
-     * @param PlaylistCategoryModel $model
+     * @param ContentMetadataSubtitleModel $model
      * @param Request $request
      */
-    public function index(PlaylistCategoryModel $model, Request $request)
+    public function index(ContentMetadataSubtitleModel $model, Request $request)
     {
         $count = $model->count();
 
@@ -38,23 +42,20 @@ class PlaylistCategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'user_id'       => 'required',
-            'title'         => 'required',
-            'description'   => 'required',
-            'status'        => 'required',
+            'metadata_id'   => 'required',
+            'subtitle_id'   => 'required',
+            'file_path'     => 'required',
         ]);
 
-        $user_id        = $request->input('user_id');
-        $title          = $request->input('title');
-        $description    = $request->input('description');
-        $status         = $request->input('status');     
+        $metadata_id    = $request->input('metadata_id'); 
+        $subtitle_id    = $request->input('subtitle_id');
+        $file_path      = $request->input('file_path');
 
-        $query              = new PlaylistCategoryModel();
-        $query->id          = Str::uuid()->toString();
-        $query->user_id     = $user_id;
-        $query->title       = $title;
-        $query->description = $description;
-        $query->status      = $status;
+        $query                  = new ContentMetadataSubtitleModel();
+        $query->id              = Str::uuid()->toString();
+        $query->metadata_id     = $metadata_id;
+        $query->subtitle_id     = $subtitle_id;
+        $query->file_path       = $file_path;
         $query->save();
 
         return response()->json([
@@ -68,7 +69,7 @@ class PlaylistCategoryController extends Controller
         ], 200);
     }
 
-    public function show(PlaylistCategoryModel $model, string $id)
+    public function show(ContentMetadataSubtitleModel $model, string $id)
     {
         return $model->findOrFail($id);
     }
@@ -78,15 +79,24 @@ class PlaylistCategoryController extends Controller
      * Example : 
      * query="video_title=Sponsbob"
      */
-    public function search(PlaylistCategoryModel $model, Request $request)
+    public function search(ContentMetadataSubtitleModel $model, Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
+            'query' => 'required',
         ]);
 
-        $title = $request->input('title');
+        $query = $request->input('query');
 
-        $query = $model->where('title', 'contains', $title);
+        // Parse Function From Trait DndbQuery
+        $query_eloquent = $this->ReqParse($query);
+
+        // Improve Query Builder Search
+        $query = null;
+        foreach($query_eloquent as $key => $value) {
+            $query = $model->where($key, 'contains', $value);
+        }
+
+        // Performe Query
         $count = $query->count();
 
         if($count == 0) {
@@ -107,7 +117,7 @@ class PlaylistCategoryController extends Controller
         ], 200);
     }
 
-    public function update(PlaylistCategoryModel $model, Request $request, string $id)
+    public function update(ContentMetadataSubtitleModel $model, Request $request, string $id)
     {
         $query = $model->findOrFail($id);
         $query->update($request->all());
@@ -123,7 +133,7 @@ class PlaylistCategoryController extends Controller
         ], 200);
     }
 
-    public function delete(PlaylistCategoryModel $model, string $id)
+    public function delete(ContentMetadataSubtitleModel $model, string $id)
     {
         $query = $model->findOrFail($id);
         $query->delete();
@@ -136,5 +146,3 @@ class PlaylistCategoryController extends Controller
         ], 200);
     }
 }
-
-?>
