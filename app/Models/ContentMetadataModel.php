@@ -17,6 +17,11 @@ class ContentMetadataModel extends DynamoDbModel
         'video_saves',
         'video_downloads',
         'privacy',
+        'metavideos',
+        'subtitle',
+        'comments',
+        'likes',
+        'dislikes',
     ];
 
     protected $table = 'ContentMetadata';

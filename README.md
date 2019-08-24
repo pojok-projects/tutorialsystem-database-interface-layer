@@ -21,7 +21,8 @@ See Red highlight below for the scope of this repository.
 
 ## API DB Diagram
 - [x] [Sprint 1](https://dbdiagram.io/d/5d28c8f8ced98361d6dc9bab)
-- [ ] [Sprint 2](https://dbdiagram.io/d/5d2edb4fced98361d6dcbc9f) [We Are Here Now]
+- [x] [Sprint 2](https://dbdiagram.io/d/5d2edb4fced98361d6dcbc9f)
+- [ ] [Spirnt 2 (Refactoring)](https://dbdiagram.io/d/5d60b65bced98361d6dddf7b) [We Are Here Now]
 
 ## Table Structure API End Points
 
@@ -34,18 +35,6 @@ See Red highlight below for the scope of this repository.
 | `content/metadata/search`                | POST   | Search Data Query       |
 | `content/metadata/update/{id}`           | POST   | Update Data by ID       |
 | `content/metadata/delete/{id}`           | POST   | Delete Data by ID       |
-| `content/metadata/video`                 | GET    | Get All Data            |
-| `content/metadata/video/store`           | POST   | Save Data               |
-| `content/metadata/video/{id}`            | GET    | Get Data by ID          |
-| `content/metadata/video/search`          | POST   | Search Data Query       |
-| `content/metadata/video/update/{id}`     | POST   | Update Data by ID       |
-| `content/metadata/video/delete/{id}`     | POST   | Delete Data by ID       |
-| `content/metadata/subtitle`              | GET    | Get All Data            |
-| `content/metadata/subtitle/store`        | POST   | Save Data               |
-| `content/metadata/subtitle/{id}`         | GET    | Get Data by ID          |
-| `content/metadata/subtitle/search`       | POST   | Search Data Query       |
-| `content/metadata/subtitle/update/{id}`  | POST   | Update Data by ID       |
-| `content/metadata/subtitle/delete/{id}`  | POST   | Delete Data by ID       |
 
 ### Content Table Routes
 | URL                                      | Method | INFO                    |
@@ -56,42 +45,18 @@ See Red highlight below for the scope of this repository.
 | `content/subtitle/search`                | POST   | Search Data Query       |
 | `content/subtitle/update/{id}`           | POST   | Update Data by ID       |
 | `content/subtitle/delete/{id}`           | POST   | Delete Data by ID       |
-| `content/dislike`                        | GET    | Get All Data            |
-| `content/dislike/store`                  | POST   | Save Data               |
-| `content/dislike/{id}`                   | GET    | Get Data by ID          |
-| `content/dislike/search`                 | POST   | Search Data Query       |
-| `content/dislike/update/{id}`            | POST   | Update Data by ID       |
-| `content/dislike/delete/{id}`            | POST   | Delete Data by ID       |
-| `content/like`                           | GET    | Get All Data            |
-| `content/like/store`                     | POST   | Save Data               |
-| `content/like/{id}`                      | GET    | Get Data by ID          |
-| `content/like/search`                    | POST   | Search Data Query       |
-| `content/like/update/{id}`               | POST   | Update Data by ID       |
-| `content/like/delete/{id}`               | POST   | Delete Data by ID       |
 | `content/category`                       | GET    | Get All Data            |
 | `content/category/store`                 | POST   | Save Data               |
 | `content/category/{id}`                  | GET    | Get Data by ID          |
 | `content/category/search`                | POST   | Search Data Query       |
 | `content/category/update/{id}`           | POST   | Update Data by ID       |
 | `content/category/delete/{id}`           | POST   | Delete Data by ID       |
-| `content/comment/metadata/{id}`          | GET    | Get Data by Metadata ID |
-| `content/comment/store`                  | POST   | Save Data               |
-| `content/comment/{id}`                   | GET    | Get Data by ID          |
-| `content/comment/update/{id}`            | POST   | Update Data by ID       |
-| `content/comment/delete/{id}`            | POST   | Delete Data by ID       |
-| `content/playlists`                      | GET    | Get All Data            |
-| `content/playlists/store`                | POST   | Save Data               |
-| `content/playlists/{id}`                 | GET    | Get Data by ID          |
-| `content/playlists/search`               | POST   | Search Data Query       |
-| `content/playlists/update/{id}`          | POST   | Update Data by ID       |
-| `content/playlists/delete/{id}`          | POST   | Delete Data by ID       |
 | `content/playlists/category`             | GET    | Get All Data            |
 | `content/playlists/category/store`       | POST   | Save Data               |
 | `content/playlists/category/{id}`        | GET    | Get Data by ID          |
 | `content/playlists/category/search`      | POST   | Search Data Query       |
 | `content/playlists/category/update/{id}` | POST   | Update Data by ID       |
 | `content/playlists/category/delete/{id}` | POST   | Delete Data by ID       |
-
 
 ### User Table Routes
 | URL                                      | Method | INFO                    |
@@ -102,42 +67,6 @@ See Red highlight below for the scope of this repository.
 | `user/search`                            | POST   | Search Data Query       |
 | `user/update/{id}`                       | POST   | Update Data by ID       |
 | `user/delete/{id}`                       | POST   | Delete Data by ID       |
-| `user/following`                         | GET    | Get All Data            |
-| `user/following/store`                   | POST   | Save Data               |
-| `user/following/{id}`                    | GET    | Get Data by ID          |
-| `user/following/search`                  | POST   | Search Data Query       |
-| `user/following/update/{id}`             | POST   | Update Data by ID       |
-| `user/following/delete/{id}`             | POST   | Delete Data by ID       |
-| `user/follower`                          | GET    | Get All Data            |
-| `user/follower/store`                    | POST   | Save Data               |
-| `user/follower/{id}`                     | GET    | Get Data by ID          |
-| `user/follower/search`                   | POST   | Search Data Query       |
-| `user/follower/update/{id}`              | POST   | Update Data by ID       |
-| `user/follower/delete/{id}`              | POST   | Delete Data by ID       |
-| `user/likevideo`                         | GET    | Get All Data            |
-| `user/likevideo/store`                   | POST   | Save Data               |
-| `user/likevideo/{id}`                    | GET    | Get Data by ID          |
-| `user/likevideo/search`                  | POST   | Search Data Query       |
-| `user/likevideo/update/{id}`             | POST   | Update Data by ID       |
-| `user/likevideo/delete/{id}`             | POST   | Delete Data by ID       |
-| `user/dislikevideo`                      | GET    | Get All Data            |
-| `user/dislikevideo/store`                | POST   | Save Data               |
-| `user/dislikevideo/{id}`                 | GET    | Get Data by ID          |
-| `user/dislikevideo/search`               | POST   | Search Data Query       |
-| `user/dislikevideo/update/{id}`          | POST   | Update Data by ID       |
-| `user/dislikevideo/delete/{id}`          | POST   | Delete Data by ID       |
-| `user/savedvideo`                        | GET    | Get All Data            |
-| `user/savedvideo/store`                  | POST   | Save Data               |
-| `user/savedvideo/{id}`                   | GET    | Get Data by ID          |
-| `user/savedvideo/search`                 | POST   | Search Data Query       |
-| `user/savedvideo/update/{id}`            | POST   | Update Data by ID       |
-| `user/savedvideo/delete/{id}`            | POST   | Delete Data by ID       |
-| `user/historyvideo`                      | GET    | Get All Data            |
-| `user/historyvideo/store`                | POST   | Save Data               |
-| `user/historyvideo/{id}`                 | GET    | Get Data by ID          |
-| `user/historyvideo/search`               | POST   | Search Data Query       |
-| `user/historyvideo/update/{id}`          | POST   | Update Data by ID       |
-| `user/historyvideo/delete/{id}`          | POST   | Delete Data by ID       |
 
 ## Example screen shots of API invocations
 
