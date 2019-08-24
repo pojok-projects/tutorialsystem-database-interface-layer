@@ -399,9 +399,12 @@ Resources:
                           - aws cloudformation validate-template --template-body file://solution.yaml --region ap-southeast-1
                       build:
                         commands:
-                          - cd source
-                          - ./build.sh
-                          - cd -
+                          - set -ex
+                          - printenv
+                          - ls -R
+                          - CURRENTDIR=`pwd`
+                          - curl -sS https://getcomposer.org/installer | php
+                          - php -c${CURRENTDIR}/php.ini composer.phar install --no-dev --no-progress
                           - aws cloudformation package --template-file solution.yaml --s3-bucket $S3Bucket --output-template-file solution.yaml
                     artifacts:
                       files: "**/*"
