@@ -31,7 +31,7 @@ $router->group(['prefix' => 'v1/'], function ($app) {
     $app->get('content/metadata/subtitle/{id}', 'ContentMetadataSubtitleController@show');
     
     // Search Routes
-    $app->post('content/metadata/search', 'ContentMetadataVideoController@search');
+    $app->post('content/metadata/search', 'ContentMetadataController@search');
     $app->post('content/metadata/video/search', 'ContentMetadataVideoController@search');
     $app->post('content/metadata/subtitle/search', 'ContentMetadataSubtitleController@search');
 
