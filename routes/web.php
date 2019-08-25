@@ -15,7 +15,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['prefix' => 'v1/'], function ($app) {
+$router->group(['prefix' => '/dbil/v1/'], function ($app) {
 
     // Content Metadata
     $app->get('content/metadata', 'ContentMetadataController@index');
