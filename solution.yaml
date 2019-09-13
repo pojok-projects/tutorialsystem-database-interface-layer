@@ -1,6 +1,6 @@
-AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion: "2010-09-09"
 
-Description: 'Tutorial System - Database Interface Layer Solution'
+Description: "Tutorial System - Database Interface Layer Solution"
 
 Transform: AWS::Serverless-2016-10-31
 
@@ -8,22 +8,14 @@ Parameters:
     pSolutionNaming:
         Type: String
 
-    pDynamoDBKey:
-        Type: 'AWS::SSM::Parameter::Value<String>'
-        Default: DYNAMODB_KEY
-
-    pDynamoDBSecret:
-        Type: 'AWS::SSM::Parameter::Value<String>'
-        Default: DYNAMODB_SECRET
-
 Resources:
     rCommonPolicyForLambdas:
         Type: AWS::IAM::ManagedPolicy
         Properties:
             Description: Policy allowing log stream access, vpc config and xray config
-            Path: !Sub '/service/'
+            Path: !Sub "/service/"
             PolicyDocument:
-                Version: '2012-10-17'
+                Version: "2012-10-17"
                 Statement:
                     - Effect: Allow
                       Action:
@@ -38,7 +30,7 @@ Resources:
                           - ec2:DescribeNetworkInterface
                           - ec2:DeleteNetworkInterface
                           - ec2:DescribeVpcEndpoints
-                      Resource: '*'
+                      Resource: "*"
                     - Effect: Allow
                       Action:
                           - xray:PutTraceSegments
@@ -46,12 +38,12 @@ Resources:
                           - xray:GetSamplingRules
                           - xray:GetSamplingTargets
                           - xray:GetSamplingStatisticSummaries
-                      Resource: '*'
+                      Resource: "*"
                     - Effect: Allow
                       Action:
                           - kms:GenerateDataKey
                           - kms:Decrypt
-                      Resource: '*'
+                      Resource: "*"
                     - Effect: Allow
                       Action:
                           - dynamodb:DescribeStream
@@ -63,15 +55,15 @@ Resources:
                           - dynamodb:Scan
                           - dynamodb:DescribeTable
                           - dynamodb:PutItem
-                      Resource: '*'
+                      Resource: "*"
 
     rDbilLambdaExecutionRole:
         Type: AWS::IAM::Role
         Properties:
-            Path: '/service/'
-            RoleName: !Sub '${pSolutionNaming}-${AWS::Region}-dbil-role'
+            Path: "/service/"
+            RoleName: !Sub "${pSolutionNaming}-${AWS::Region}-dbil-role"
             AssumeRolePolicyDocument:
-                Version: '2012-10-17'
+                Version: "2012-10-17"
                 Statement:
                     - Effect: Allow
                       Principal:
@@ -85,7 +77,7 @@ Resources:
     rDbilLambda:
         Type: AWS::Lambda::Function
         Properties:
-            FunctionName: !Sub '${pSolutionNaming}-lambda'
+            FunctionName: !Sub "${pSolutionNaming}-lambda"
             Description: Database Interface Layer - Lambda
             Runtime: provided
             Role: !Sub ${rDbilLambdaExecutionRole.Arn}
@@ -100,16 +92,14 @@ Resources:
                 Variables:
                     LOG_CHANNEL: stderr
                     DYNAMODB_REGION: ap-southeast-1
-                    DYNAMODB_KEY: !Sub ${pDynamoDBKey}
-                    DYNAMODB_SECRET: !Sub ${pDynamoDBSecret}
 
     rApiGatewayRole:
         Type: AWS::IAM::Role
         Properties:
             Path: /service/
-            RoleName: !Sub '${pSolutionNaming}-api-gateway-role'
+            RoleName: !Sub "${pSolutionNaming}-api-gateway-role"
             AssumeRolePolicyDocument:
-                Version: '2012-10-17'
+                Version: "2012-10-17"
                 Statement:
                     - Effect: Allow
                       Principal:
@@ -118,9 +108,9 @@ Resources:
                       Action:
                           - sts:AssumeRole
             Policies:
-                - PolicyName: !Sub '${pSolutionNaming}-api-gateway-policy'
+                - PolicyName: !Sub "${pSolutionNaming}-api-gateway-policy"
                   PolicyDocument:
-                      Version: '2012-10-17'
+                      Version: "2012-10-17"
                       Statement:
                           - Effect: Allow
                             Action:
@@ -131,10 +121,10 @@ Resources:
                                 - logs:PutLogEvents
                                 - logs:GetLogEvents
                                 - logs:FilterLogEvents
-                            Resource: '*'
-                - PolicyName: !Sub '${pSolutionNaming}-api-lambda-invoke-lambda-iam-policy'
+                            Resource: "*"
+                - PolicyName: !Sub "${pSolutionNaming}-api-lambda-invoke-lambda-iam-policy"
                   PolicyDocument:
-                      Version: '2012-10-17'
+                      Version: "2012-10-17"
                       Statement:
                           - Effect: Allow
                             Action:
@@ -144,7 +134,7 @@ Resources:
     rApiGateway:
         Type: AWS::ApiGateway::RestApi
         Properties:
-            Name: !Sub '${pSolutionNaming}-api-gateway'
+            Name: !Sub "${pSolutionNaming}-api-gateway"
             Description: Tutorial System DBIL - API Rest Gateway
             FailOnWarnings: true
             EndpointConfiguration:
@@ -159,7 +149,7 @@ Resources:
             Principal: apigateway.amazonaws.com
             SourceArn: !Sub
                 - arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${ApiGatewayRef}/*
-                - {ApiGatewayRef: !Ref rApiGateway}
+                - { ApiGatewayRef: !Ref rApiGateway }
 
     rApiGatewayAccount:
         Type: AWS::ApiGateway::Account
@@ -171,7 +161,7 @@ Resources:
         Properties:
             RestApiId: !Ref rApiGateway
             ParentId: !Sub ${rApiGateway.RootResourceId}
-            PathPart: '{proxy+}'
+            PathPart: "{proxy+}"
 
     rApiProxyAnyHandler:
         Type: AWS::ApiGateway::Method
@@ -184,7 +174,7 @@ Resources:
             Integration:
                 Type: AWS_PROXY
                 IntegrationHttpMethod: POST
-                Uri: !Sub 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${rDbilLambda.Arn}/invocations'
+                Uri: !Sub "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${rDbilLambda.Arn}/invocations"
             MethodResponses: []
 
     rApiGatewayResponseDefault4XX:
@@ -205,7 +195,7 @@ Resources:
         Description: Tutorial System DBIL - Deployment of API Gateway endpoints
         Properties:
             RestApiId: !Ref rApiGateway
-            StageName: !Sub 'mstrStage'
+            StageName: !Sub "mstrStage"
 
     rApiGatewayStage:
         Type: AWS::ApiGateway::Stage
@@ -214,14 +204,14 @@ Resources:
             RestApiId: !Ref rApiGateway
             DeploymentId: !Ref rApiGatewayDeploymentHASHDATE
             MethodSettings:
-                - ResourcePath: '/*'
-                  HttpMethod: '*'
-                  MetricsEnabled: 'true'
-                  DataTraceEnabled: 'true'
+                - ResourcePath: "/*"
+                  HttpMethod: "*"
+                  MetricsEnabled: "true"
+                  DataTraceEnabled: "true"
                   LoggingLevel: INFO
 
 Outputs:
     oRestApi:
         Value: !Ref rApiGateway
         Export:
-            Name: !Sub '${pSolutionNaming}-rest-api'
+            Name: !Sub "${pSolutionNaming}-rest-api"
