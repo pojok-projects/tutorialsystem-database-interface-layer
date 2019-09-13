@@ -27,10 +27,10 @@ return [
     'connections' => [
         'aws' => [
             'credentials' => [
-                'key' => '',
-                'secret' => '',
+                'key' => env('DYNAMODB_KEY'),
+                'secret' => env('DYNAMODB_SECRET'),
                 // If using as an assumed IAM role, you can also use the `token` parameter
-                'token' => env('AWS_SESSION_TOKEN'),
+                'token' => '',
             ],
             'region' => env('DYNAMODB_REGION'),
             // if true, it will use Laravel Log.
