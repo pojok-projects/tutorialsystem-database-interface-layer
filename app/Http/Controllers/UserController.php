@@ -50,6 +50,7 @@ class UserController extends Controller
             'gender'            => 'required',
         ]);
 
+        $id             = $request->input('id');
         $name           = $request->input('name');
         $email          = $request->input('email');
         $first_name     = $request->input('first_name');
@@ -72,7 +73,7 @@ class UserController extends Controller
 
 
         $query                  = new UserModel();
-        $query->id              = Str::uuid()->toString();
+        $query->id              = $id ? $id : Str::uuid()->toString();
         $query->name            = $name;
         $query->email           = $email;
         $query->first_name      = $first_name; 
